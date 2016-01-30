@@ -1,0 +1,322 @@
+<?php
+echo $this->Html->script('ckeditor/ckeditor');
+?>
+<section class="content-header">
+    <h1>
+        Danh sách sản phẩm
+        <small>Sửa đổi</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo DOMAINAD ?>" ><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="<?php echo DOMAINAD ?>product" > Danh sách sản phẩm</a></li>
+        <li class="active"> Sửa đổi</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+
+    <div class="row">
+        <div class="col-xs-12">
+
+                <div class="box-header">
+                    <div class="box-tools">
+
+                        <div class="input-group">
+
+                            <div class="input-group-btn">
+
+                                <a href="<?php echo DOMAINAD; ?>product_category/add" class="btn btn-sm btn-success" ><i class="fa fa-fw fa-plus-square"></i> Thêm mới </a>
+                                <a href="#messages" rel="modal" class="btn btn-sm btn-warning" > Trợ giúp </a>
+                                <a href="<?php echo DOMAINAD; ?>home" class="btn btn-sm btn-danger" > Đóng </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- /.box-header -->
+
+            <div class="box">
+
+
+                <!-- form start -->
+                <?php echo $this->Form->create(null, array('url' => DOMAINAD . 'product/edit', 'type' => 'post', 'enctype' => 'multipart/form-data', 'name' => 'image')); ?>
+
+
+                <?php
+                $my_error1 = $this->Session->flash();
+                ?>
+                <?php if($my_error1 !='<div id="flashMessage" class="message"></div>'){ ?>
+                    <div class="alert alert-warning alert-dismissable">
+                        <i class="fa fa-warning"></i>
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <?php echo $my_error1; ?>
+                    </div>
+                <?php } ?>
+
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="idtitle">Tên sản phẩm</label>
+                        <?php echo $this->Form->input('Product.name', array('label' => '', 'class' => 'form-control', 'onchange' => 'get_alias()', 'id' => 'idtitle')); ?>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_en">SEO Title</label>
+                        <?php echo $this->Form->input('Product.name_en', array('label' => '', 'class' => 'form-control', 'id' => 'name_en')); ?>
+                    </div>
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Mã sản phẩm</label>
+                            <?php echo $this->Form->input('Product.code', array('label' => '', 'class' => 'form-control')); ?>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Số lượng</label>
+                                <?php echo $this->Form->input('Product.sl', array('label' => '', 'class' => 'form-control')); ?>
+                            </div>
+
+
+                        <div class="form-group">
+                        <label for="idalias">Đường dẫn</label>
+
+                        <?php echo $this->Form->input('Product.alias', array('label' => '', 'class' => 'form-control', 'id' => 'idalias')); ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Meta description</label>
+                        <?php echo $this->Form->input('Product.meta_description', array('type' => 'textarea', 'label' => '', 'class' => 'form-control', 'style' => 'resize: none;')); ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Meta keyword</label>
+                        <?php echo $this->Form->input('Product.meta_keyword', array('label' => '', 'class' => 'form-control')); ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Danh muc cha</label>
+                        <?php echo $this->Form->input('Product.product_category_id',array('type'=>'select','options'=>$list_cat,'empty'=>'Chọn danh mục','class'=>'btn btn-sm btn-default','label'=>''));?>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sắp xếp</label>
+                        <?php echo $this->Form->input('Product.sort_order', array('label' => '', 'class' => 'btn btn-sm btn-default')); ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giá sản phẩm</label>
+                        <?php echo $this->Form->input('Product.price', array('label' => '', 'class' => 'form-control')); ?>
+                    </div>
+
+                            <div class="form-group">
+                                <label>Link download free</label>
+								<?php
+                                $link_free = explode('|', $this->data['Product']['link_free']);
+                                ?>
+                                <input name="link_free[]" class="form-control" type="text" value="<?php if(!empty($link_free)) echo $link_free[0]; ?>"/>
+                                <input type="button" value="Thêm link" onclick="add_link_free();" class="btn btn-sm btn-default" />
+                                
+                                <div class="list_link_free">
+                                    <?php if(!empty($link_free) && count($link_free) > 1){
+
+                                        $i = 1;
+
+                                        foreach($link_free as $key => $value){
+                                            if($key > 0){
+                                                ?>
+                                                <div class="link_free_row" id="link_free_row_<?php echo $i; ?>">
+                                                    <input name="link_free[]" value="<?php echo $value; ?>" class="form-control" type="text">
+                                                    <input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free">
+                                                </div><!--end .link_free_row-->
+                                                <?php
+
+                                                $i++;
+
+                                            }
+                                        }
+                                    }?>
+                                </div><!--end .list_link_free-->
+                            </div>
+
+                            <div class="form-group">
+                                <label>Link download trả phí</label>
+                                <?php
+                                $link_charge = array();
+                                if(!empty($list_link)){ foreach($list_link as $key => $value){
+                                    $link_charge[] = $value['ProductLink']['link_href'];
+                                }}
+                                ?>
+								<input name="link_charge[]" value="<?php if(!empty($link_charge)) echo $link_charge[0]; ?>" class="form-control" type="text" />
+								<input type="button" value="Thêm link" onclick="add_link_charge();" class="btn btn-sm btn-default" />
+                                <div class="list_link_charge">
+                                    <?php if(!empty($link_charge) && count($link_charge) > 1){
+                                        foreach($link_charge as $key => $value){
+											if($key > 0){
+                                                ?>
+                                                <div class="link_free_row">
+                                                    <input name="link_charge[]" value="<?php echo $value; ?>" class="form-control" type="text">
+                                                    <input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free">
+                                                </div>
+                                            <?php
+											}
+                                        }
+                                    }?>
+                                </div><!--end .list_link_free-->
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('.list_link_charge, .list_link_free').delegate('.more_link_free', 'click', function () {
+                                            $(this).parents(".link_free_row").remove();
+                                        });
+                                    });
+                                </script>
+                            </div>
+
+                    <div class="form-group">
+                        <label>Hình đại diện</label>
+                        <div id="images_chose">
+                            <?php if(!empty($this->data['Product']['images'])){?>
+                            <?php } ?>
+                                <img src="/admin/timthumb.php?src=<?php echo $this->data['Product']['images'];?>&amp;h=100&amp;w=100&amp;zc=1" />
+                        </div><!--end #images_chose-->
+                        <?php echo $this->Form->input('Product.images',array('label'=>false, 'class'=>'form-control','id' => 'xFilePath','maxlength'=>'255'));?>
+                        <?php echo $this->Form->input('Product.id',array('type'=>'hidden'));?>
+                        <input type="button" value="Chọn ảnh" onclick="BrowseServer();" class="btn btn-sm btn-default"/>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label>Hình đầu tiên</label>
+                        <div id="images_chose_ff">
+                            <?php if(!empty($this->data['Product']['first_image'])){?>
+                                <img src="/admin/timthumb.php?src=<?php echo $this->data['Product']['first_image'];?>&amp;h=100&amp;w=100&amp;zc=1" />
+                            <?php } ?>
+                        </div><!--end #images_chose-->
+                        <?php echo $this->Form->input('Product.first_image',array('label'=>false, 'class'=>'form-control','id' => 'xFileFirstImage','maxlength'=>'255'));?>
+                        <input type="button" value="Chọn ảnh" class="btn btn-sm btn-default" onclick="BrowseServerFF();"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Danh sách ảnh html</label>
+                        <?php echo $this->Form->input('Product.multi_images', array('type' => 'textarea', 'rows' => 20, 'label' => '', 'class' => 'form-control', 'style' => 'resize: none;')); ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Trạng thái&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                        <?php
+                        echo $this->Form->radio(
+                            'Product.status',
+                            array(0=>'&nbspNgừng hoạt động&nbsp&nbsp&nbsp&nbsp&nbsp', 1=>'&nbspHoạt động'),
+                            array('legend'=>false, 'style'=>'float: left; cursor: pointer; margin-left: 20px;', 'value'=>1)
+                        );
+                        ?>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Mô tả sản phẩm</label>
+                        <?php
+                        $CKEditor = new CKEditor();
+                        $CKEditor->returnOutput = true;
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->config['width'] = '98%';
+                        $CKEditor->config['height'] = '200';
+                        $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
+                        CKFinder::SetupCKEditor( $CKEditor ) ;
+
+                        $CKEditor->config['toolbar'] = array(
+                            array( 'Source', '-', 'Bold', 'Italic', 'Underline', 'Strike' ),
+                            array( 'Image', 'Link', 'Unlink', 'Anchor' )
+                        );
+
+                        $initialValue = empty($this->data['Product']['description']) ? '' : $this->data['Product']['description'];
+                        echo $CKEditor->editor("data[Product][description]", $initialValue, "");
+                        ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chi tiết sản phẩm</label>
+                        <?php
+                        $CKEditor = new CKEditor();
+                        $CKEditor->returnOutput = true;
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->config['width'] = '98%';
+                        $CKEditor->config['height'] = '300';
+                        $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
+                        CKFinder::SetupCKEditor( $CKEditor ) ;
+
+                        $initialValue = empty($this->data['Product']['detail']) ? '' : $this->data['Product']['detail'];
+                        echo $CKEditor->editor("data[Product][detail]", $initialValue, "");
+                        ?>
+                    </div>
+
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                    <a href="javascript:void(0);" onclick="javascript:document.image.submit();" class="btn btn-primary"> <span class="icon-32-save"></span> Lưu </a>
+                    <a href="javascript:void(0);" class="btn btn-primary" onclick="javascript:document.image.reset();"> <span class="icon-32-refresh"> </span> Làm mới </a>
+                    <a href="#messages" rel="modal" class="btn btn-primary"> <span class="icon-32-help"></span> Trợ giúp </a>
+                    <a href="<?php echo DOMAINAD ?>product" class="btn btn-primary"> <span class="icon-32-cancel"></span> Hủy </a>
+                </div>
+
+
+
+
+
+
+
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+
+</section><!-- /.content -->
+
+
+<script type="text/javascript" language="javascript">
+
+    function MoreImage(){
+        var number_images = $('#number_images').val();
+        number_images ++;
+        var content = '<div id="box_multi_images_'+number_images+'"><div id="images_chose_multi_images_'+number_images+'" style="float: left; width: 100px;"></div><!--end #images_chose--><input name="multi_images[]" class="text-input image-input datepicker" id="multi_images_'+number_images+'" maxlength="255" style="margin-left: 20px; float: left;" type="text"><input type="button" value="Chọn ảnh" onclick="BrowseServerMore(\'multi_images_'+number_images+'\');" class="button" style="margin-left: 20px; float: left; margin-top: 5px;"><input type="button" value="Xóa ảnh" onclick="CloseImages(\'box_multi_images_'+number_images+'\');" class="button close_images" style="margin-left: 20px; float: left; margin-top: 5px;" data-image="box_multi_images_'+number_images+'"><div style="clear: both;"></div></div>';
+        $('.box_multi_images').append(content);
+        $('#number_images').val(parseFloat(number_images));
+
+    }
+
+    function CloseImages(DIV){
+        $('#'+DIV).html('');
+    }
+
+    function add_link_free()
+    {
+        var html = '';
+        html += '<div class="link_free_row">';
+        html += '    <input name="link_free[]" class="form-control" type="text"/>';
+        html += '<input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free" />';
+        html += '</div><!--end .link_free_row-->';
+
+        $('.list_link_free').append(html);
+
+    }
+
+    function add_link_charge()
+    {
+        var html = '';
+        html += '<div class="link_free_row">';
+        html += '<input name="link_charge[]" class="form-control" type="text" />';
+        html += '<input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free" />';
+        html += '</div><!--end .link_free_row-->';
+
+        $('.list_link_charge').append(html);
+
+    }
+
+    $(document).ready(function(){
+        $('.more_link_free').live('click',function() {
+            $(this).parent().html('');
+        });
+    });
+    
+</script>
