@@ -27,83 +27,68 @@
         <!-- Phần cấu hình này phải giữ lại -->
         <!-- CSS - ICO
         ================================================== -->
-        <link rel="shortcut icon" href="http://xonxao.tv/images/logoxx.png" type="image/x-icon" />
-        <?php echo $this->Html->css(array('main.css', 'perfect-scrollbar.css', 'owl.carousel.css')) ?>
-        <!-- owl.carousel.js -->
-        <?php echo $this->Html->script(array(
-            'jquery-2.1.4.min.js', 
-            'bootstrap.min.js', 
-            'fix_bug.js',
-            'jquery.nst.ui.js',
-            'custom.js',
-            'perfect-scrollbar.jquery.js',
-            'perfect-scrollbar.js',
-            'jquery-scrollTo.js',
-            'jquery.lazyload.min.js'
-            )); ?>
+        <link href="<?php echo DOMAIN?>images/icon/logi.jpg" rel="icon">
+        <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/isotope.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/slideshow.css" media="screen">
 
-    </head>
-    <body>
-        <!--Start header-->
-         <?php echo $this->element('menuhead'); ?>
-        <!--
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $(window).scroll(function () {
-                if ($(this).scrollTop() > 10) {
-                    $("#top").css({ "position":"fixed", "top":"0", "left":"0","width":"100%"});
+        <script>(function() {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+        }
+        _fbq.push(['addPixelId', '1514115115498919']);
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', 'PixelInitialized', {}]);
+        </script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery.nivo.slider.pack.js"></script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/MENU.js"></script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/isotope.js"></script>
+           
+           <script type="text/javascript">
+            $(document).ready(function () {
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#top').fadeIn();
                 } else {
-                    $("#top").css({ "position":"static" });
+                    $('#top').fadeOut();
                 }
             });
+
+            $('#top').click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
             });
-        </script>
-        -->
-        <script type="text/javascript">
 
-            $(function () {
-                $("img").lazyload();
-            });
+        });
+           </script>
 
-        </script>                 
-        <?php echo $content_for_layout; ?>
-        <!--Footer-->
-        <footer id="footer-wrap" class="">
-            <div class="container">
-                <div class="footer-inner">
-                    <div class="footer-copyright">
-                        <p  style="text-align:center;">© Copyright Xôn Xao - Phim Ngắn Hài Hước - Kênh Phim Hài hước, Clip Hài Hước, Clip Hot, Thời Trang, Nội Trợ dành cho giới trẻ. <br />
-							<span>Bản thử nghiệm!</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    </head>
+   <body>
 
+        <div id="top" style="display: block;"><img src="<?php echo DOMAIN?>images/toTop.png"></div>
+        <div id="container">
+            <?php echo $this->element('header')?>
+            
+            <?php echo $content_for_layout;?>
+        <div id="content"><h1 style="display: none;">NEW FUTURE GRAPHICS | THƯ VIỆN 3D MAX, 3D, 3DS MAX, MODELS 3D, 3D MODELS, DOWNLOAD 3D MODELS, SÁCH KIẾN TRÚC, DOWNLOAD 3DS MAX, HỒ SƠ THI CÔNG, THƯ VIỆN REVIT, THƯ VIỆN PHOTOSHOP, MODELS, HDRI, MAP</h1>
+        </div>
+        </div>
+        <?php echo $this->element('footer')?>
 
-        <script src="js/owl.carousel.js"></script>
+          
+        </div>
 
-        <script type="text/javascript">
-            var owl = $("#owl-carousel");
-            owl.owlCarousel({
-                items: 4,
-                navigation: false,
-                pagination: false,
-                autoPlay: 5000,
-                stopOnHover: true,
-                itemsDesktop: [1199, 4],
-                itemsTablet: [600, 2], //2 items between 600 and 0
-                itemsDesktopSmall: [900, 3], // betweem 900px and 601px
-                itemsMobile: [479, 2],
-            });
-            $(".Rslide .next_slider").click(function () {
-                owl.trigger('owl.next');
-            });
-            $(".Rslide .prev_slider").click(function () {
-                owl.trigger('owl.prev');
-            });
-        </script>
-        <?php //echo $this->Html->script('snowstorm.js') ?>
-
-    </body>
+</body>
 </html>

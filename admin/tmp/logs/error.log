@@ -1001,3 +1001,93 @@ Request URL: /admin/js/ckeditorckeditor.js?t=AA4E4NT
 Stack Trace:
 #0 D:\wamp\www\thuvienkientruc.com\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2016-01-31 05:05:08 Error: [MissingControllerException] Controller class TagController could not be found.
+Exception Attributes: array (
+  'class' => 'TagController',
+  'plugin' => NULL,
+)
+Request URL: /admin/tag
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-31 05:06:06 Error: [MissingControllerException] Controller class TagController could not be found.
+Exception Attributes: array (
+  'class' => 'TagController',
+  'plugin' => NULL,
+)
+Request URL: /admin/tag/add
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-31 05:06:59 Error: [MissingControllerException] Controller class MenuController could not be found.
+Exception Attributes: array (
+  'class' => 'MenuController',
+  'plugin' => NULL,
+)
+Request URL: /admin/menu
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-31 05:24:51 Error: [MissingTableException] Table product_links for model ProductLink was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'product_links',
+  'class' => 'ProductLink',
+  'ds' => 'default',
+)
+Request URL: /admin/product/edit/104
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\lib\Cake\Model\Model.php(3653): Model->setSource('product_links')
+#1 D:\xampp\htdocs\tvnt\lib\Cake\Model\Model.php(827): Model->getDataSource()
+#2 D:\xampp\htdocs\tvnt\admin\Controller\ProductController.php(371): Model->__call('findAllByProduc...', Array)
+#3 D:\xampp\htdocs\tvnt\admin\Controller\ProductController.php(371): AppModel->findAllByProductId('104')
+#4 [internal function]: ProductController->edit('104')
+#5 D:\xampp\htdocs\tvnt\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProductController), Array)
+#6 D:\xampp\htdocs\tvnt\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 D:\xampp\htdocs\tvnt\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProductController), Object(CakeRequest))
+#8 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2016-01-31 05:25:03 Error: [MissingTableException] Table product_links for model ProductLink was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'product_links',
+  'class' => 'ProductLink',
+  'ds' => 'default',
+)
+Request URL: /admin/product/edit/105
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\lib\Cake\Model\Model.php(3653): Model->setSource('product_links')
+#1 D:\xampp\htdocs\tvnt\lib\Cake\Model\Model.php(827): Model->getDataSource()
+#2 D:\xampp\htdocs\tvnt\admin\Controller\ProductController.php(371): Model->__call('findAllByProduc...', Array)
+#3 D:\xampp\htdocs\tvnt\admin\Controller\ProductController.php(371): AppModel->findAllByProductId('105')
+#4 [internal function]: ProductController->edit('105')
+#5 D:\xampp\htdocs\tvnt\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ProductController), Array)
+#6 D:\xampp\htdocs\tvnt\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 D:\xampp\htdocs\tvnt\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ProductController), Object(CakeRequest))
+#8 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2016-01-31 05:26:37 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /admin/js/ckeditorckeditor.js?t=AA4E4NT
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-31 06:22:13 Error: [MissingControllerException] Controller class TagController could not be found.
+Exception Attributes: array (
+  'class' => 'TagController',
+  'plugin' => NULL,
+)
+Request URL: /admin/tag
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-01-31 06:22:14 Error: [MissingControllerException] Controller class TagController could not be found.
+Exception Attributes: array (
+  'class' => 'TagController',
+  'plugin' => NULL,
+)
+Request URL: /admin/tag
+Stack Trace:
+#0 D:\xampp\htdocs\tvnt\admin\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

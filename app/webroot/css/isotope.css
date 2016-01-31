@@ -1,0 +1,182 @@
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+/**** Isotope styles ****/
+
+/* required for containers to inherit vertical size from window */
+
+/*#container{
+width:120%;
+}*/
+.element {
+	/*float: left;
+	margin-right: 52px;
+	/*
+	width:278px;
+	*/
+	/*width:24.7%;
+	min-height:318px;
+	border-bottom:4px #eba73c solid;
+	margin-bottom:50px;
+	background-color:#333333!important;
+	position:relative;*/
+}
+/*.element img{
+	padding-top:5px;
+	background-color:#333333;
+	margin-bottom:5px;
+}
+.element p{
+	text-align:center;
+	color:#999999;
+	padding:10px 10px 20px 10px;
+}
+.element h4{
+	text-align:center;
+	color:#FFFFFF
+}
+*/
+/*.element * {
+ margin: 0;
+}*/
+/*a.selected {
+   color:#fff !important;
+    text-shadow: none;
+	border-bottom:#993366 3px solid !important;
+	height:35px !important;
+	line-height:34px !important;
+	background-color:#eba73c;
+	padding:10px 15px !important;
+	line-height:35px;
+}
+/**** Example Options ****/
+
+/*#options {
+}
+#options h3 {
+  margin-bottom: 0.2em;
+  font-size: 15px;
+}
+#options h4 { 
+  font-weight: bold;
+}*/
+/*#options ul {
+  margin: 0;
+  list-style: none;
+  text-align:center;
+  margin:35px 0px;
+  border-top:1px dotted rgba(0, 0, 0, 0.2);
+  border-bottom:1px dotted rgba(0, 0, 0, 0.2);
+}
+*/
+/*#options ul ul {
+  margin-left: 1.5em;
+}*/
+/*#options li {
+	display:inline-block;
+	background-image:none !important;
+	text-shadow:none !important;
+    text-transform:capitalize;
+	border-right:1px dotted rgba(0, 0, 0, 0.2);
+	height:37px !important;
+	line-height:34px;
+	text-decoration:none;
+}*/
+/*#options li a {
+	width:0px !important;
+	background-image:none !important;
+	display:inline;
+	padding:15px 15px;
+	text-shadow:none !important;
+	text-decoration:none;
+}*/
+/*#options li a:last-child{
+	border-right:none;
+}*/
+/*#options li a:hover {
+	color:#fff;
+	background-color:#eba73c;
+	border-bottom:#993366 3px solid;
+	padding:10px 15px;
+}*/
+/*#options li a:active {
+}*/
+/*.co a:link{
+	background-color:#FF3333;
+	border-radius:6px;
+	padding:20px 15px;
+}*/
+/*#options li a {
+    border:none;
+  font-family: 'Vidaloka', sans-serif;
+  font-size:14px !important;
+  text-transform:capitalize;
+  color:#993366;
+}*/
+#options li a.selected {
+  text-shadow: none;
+  color:#ff6e22;
+ 
+}
+
