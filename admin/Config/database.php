@@ -65,7 +65,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'xonxao',
+		'database' => 'thuvienkientruc',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

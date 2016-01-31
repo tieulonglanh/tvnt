@@ -116,13 +116,54 @@
                         ?>
                     </div>
 
+<script>
+        $(document).ready(function(){
+            var availableTags = [<?php echo $tags_str ?>];
 
+          //The text input
+          var input = $("input#ProductCategoryTags");
 
+          //The tagit list
+          var instance = $("<ul class=\"tags\"></ul>");
 
+          //Store the current tags
+          //Note: the tags here can be split by any of the trigger keys
+          //      as tagit will split on the trigger keys anything passed  
+          var currentTags = input.val();
 
+          //Hide the input and append tagit to the dom
+          input.hide().after(instance);
 
+          //Initialize tagit
+          instance.tagit({
+            tagSource:availableTags,
+            tagsChanged:function () {
 
+              //Get the tags            
+              var tags = instance.tagit('tags');
+              var tagString = [];
 
+              //Pull out only value
+              for (var i in tags){
+                tagString.push(tags[i].value);
+              }
+
+              //Put the tags into the input, joint by a ','
+              input.val(tagString.join(','));
+            }
+          });
+
+          //Add pre-loaded tags to tagit
+          instance.tagit('add', currentTags);
+
+        });
+</script>
+
+                <div class="form-group">
+                    <label>Tags</label>
+                    <?php echo $this->Form->input('ProductCategory.tags', array( 'type' => 'hidden', 'label' => '', 'class' => 'form-control')); ?>
+                    
+                </div>
 
                 </div><!-- /.box-body -->
 

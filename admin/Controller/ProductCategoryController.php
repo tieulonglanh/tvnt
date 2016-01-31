@@ -10,7 +10,7 @@
 class ProductCategoryController extends AppController {
 
     public $name = 'ProductCategory';
-    public $uses = array('ProductCategory');
+    public $uses = array('ProductCategory','Tag');
 
 	/*
 	**
@@ -54,6 +54,15 @@ class ProductCategoryController extends AppController {
 				$this->Session->setFlash(__('Hiện tại không thể thực hiện chức năng thêm mới. Mời thử lại !', true));
 			}
 		}
+        $tags = $this->Tag->find('all');
+        $tags_str = "";
+        foreach($tags as $tag) {
+            $tags_str .= "{value: {$tag['Tag']['id']}, label: '{$tag['Tag']['tag_name']}'},";
+        }
+        
+        $tags_str = rtrim($tags_str,',');
+        $this->set('tags_str', $tags_str);
+        
         $list_cat = $this->get_category('ProductCategory');
         $this->set('list_cat', $list_cat);
     }
@@ -81,9 +90,21 @@ class ProductCategoryController extends AppController {
             }
         }else if (empty($this->request->data)) {
             $this->data = $this->ProductCategory->read(null, $id);
+            $tag_ids = $this->data['ProductCategory']['tags'];
+            echo $tag_ids; die;
         }
         $list_cat = $this->get_category('ProductCategory');
         $this->set('list_cat', $list_cat);
+        
+        $tags = $this->Tag->find('all');
+        $tags_str = "";
+        foreach($tags as $tag) {
+            $tags_str .= "{value: {$tag['Tag']['id']}, label: '{$tag['Tag']['tag_name']}'},";
+        }
+        
+        $tags_str = rtrim($tags_str,',');
+        $this->set('tags_str', $tags_str);
+        
 	}
 
 	

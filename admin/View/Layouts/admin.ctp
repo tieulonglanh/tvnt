@@ -4,13 +4,17 @@
         <meta charset="UTF-8">
         <title>Administractor</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+        <!-- jQuery 2.0.2 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- jQuery UI 1.10.3 -->
+        <?php echo $this->Html->script('jquery-ui-1.10.3.min'); ?>
+        <?php echo $this->Html->script(array('ddaccordion', 'function','tag-it')); ?>
         <?php //echo $this->Html->css(array("reset", 'style')); ?>
         <?php //echo $this->Html->css(array("reset")); ?>
-        <?php echo $this->Html->script(array('jquery.min', 'ddaccordion', 'function')); ?>
+        
         <?php //echo $this->Html->script('ckeditor/ckeditor'); ?>
         <?php echo $this->Html->script('ckfinder/ckfinder'); ?>
-
+        <?php echo $this->Html->css(array("jquery-ui","tag-it")); ?>
         <!-- bootstrap 3.0.2 -->
         <?php echo $this->Html->css(array("bootstrap.min")); ?>
         <!-- font Awesome -->
@@ -333,10 +337,7 @@
         <!-- add new calendar event modal -->
 
 
-        <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- jQuery UI 1.10.3 -->
-        <?php echo $this->Html->script('jquery-ui-1.10.3.min'); ?>
+        
         <!-- Bootstrap -->
         <?php echo $this->Html->script('bootstrap.min'); ?>
         <!-- Morris.js charts -->
