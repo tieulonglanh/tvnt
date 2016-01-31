@@ -56,6 +56,7 @@
                                     <th width="4%">STT</th>
                                     <th width="15%">Ảnh đại diện</th>
                                     <th width="30%" style="text-align:center;"><?php echo $this->Paginator->sort('News.name', 'Tiêu đề tin'); ?></th>
+                                    <th style="width: 5%; text-align:center;">Đường dẫn</th>
                                     <th width="15%"><?php echo $this->Paginator->sort('News.news_category_id', 'Danh mục'); ?></th>
                                     <th width="11%"><?php echo $this->Paginator->sort('News.sort_order', 'Sắp xếp'); ?></th>
                                     <th width="11%"><?php echo $this->Paginator->sort('News.modified', 'Thay đổi'); ?></th>
@@ -99,6 +100,7 @@
                                         <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['News']['images'];?>&amp;h=100&amp;w=100&amp;zc=1" />
                                     </td>
                                     <td><a href="<?php echo DOMAINAD ?>news/edit/<?php echo $value['News']['id']; ?>" title="Edit"><?php echo $value['News']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['News']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
+                                    <th><a target="blank" href="<?php echo DOMAIN ?>chi-tiet-tin/<?php echo $value['News']['alias']; ?>">Click here</a></th>
                                     <td><?php echo $value['NewsCategory']['name']; ?></td>
                                     <td><?php echo $value['News']['sort_order']; ?></td>
                                     <td>

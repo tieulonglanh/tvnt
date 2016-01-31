@@ -50,7 +50,6 @@
                             <th width="4%">STT</th>
                             <th width="20%">Ảnh đại diện</th>
                             <th width="20%" style="text-align:center;"><?php echo $this->Paginator->sort('NewsCategory.name', 'Tên danh mục'); ?></th>
-                            <th style="width: 5%; text-align:center;">Đường dẫn</th>                            
                             <th width="20%"><?php echo $this->Paginator->sort('NewsCategory.parent_id', 'Danh mục cha'); ?></th>
                             <th width="11%"><?php echo $this->Paginator->sort('NewsCategory.sort_order', 'Sắp xếp'); ?></th>
                             <th width="11%"><?php echo $this->Paginator->sort('NewsCategory.modified', 'Thay đổi'); ?></th>
@@ -106,7 +105,6 @@
                                     <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['NewsCategory']['images'];?>&amp;h=100&amp;w=100&amp;zc=1" />
                                 </td>
                                 <td><a href="<?php echo DOMAINAD ?>news_category/edit/<?php echo $value['NewsCategory']['id']; ?>" title="Edit"><?php echo $value['NewsCategory']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['NewsCategory']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
-                                <th><a target="blank" href="<?php echo DOMAIN ?>danh-muc-tin/<?php echo $value['NewsCategory']['alias']; ?>">Click here</a></th>
                                 <td style="text-align:center;">
                                     <?php echo $value['NewsCategory']['sort_order']; ?>
                                 </td>

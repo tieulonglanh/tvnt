@@ -63,6 +63,7 @@
                         <th width="4%">Mã</th>
                         <th width="40px">Ảnh</th>
                         <th style="text-align:center;"><?php echo $this->Paginator->sort('ProductCategory.name', 'Tên danh mục'); ?></th>
+                        <th style="width: 5%; text-align:center;">Đường dẫn</th>
                         <th width="20%"><?php echo $this->Paginator->sort('ProductCategory.parent_id', 'Danh mục cha'); ?></th>
                         <th width="11%"><?php echo $this->Paginator->sort('ProductCategory.sort_order', 'Sắp xếp'); ?></th>
                         <th width="11%"><?php echo $this->Paginator->sort('ProductCategory.modified', 'Thay đổi'); ?></th>
@@ -77,6 +78,7 @@
                                 <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['ProductCategory']['images'];?>&amp;h=40&amp;w=40&amp;zc=1" />
                             </td>
                             <td><a href="<?php echo DOMAINAD ?>product_category/edit/<?php echo $value['ProductCategory']['id']; ?>" title="Edit"><?php echo $value['ProductCategory']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['ProductCategory']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
+                            <th><a target="blank" href="<?php echo DOMAIN ?>danh-muc/<?php echo $value['ProductCategory']['alias']; ?>">Click here</a></th>
                             <td style="text-align:center;"><?php echo $value['Parent']['name']; ?></td>
                             <td style="text-align:center;"><?php echo $value['ProductCategory']['sort_order']; ?></td>
                             <td>

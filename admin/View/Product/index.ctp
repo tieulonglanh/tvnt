@@ -56,6 +56,7 @@
                             <th width="7%"><?php echo $this->Paginator->sort('Product.id', 'Mã'); ?></th>
                             <th style="width: 5%; text-align:center;">Ảnh</th>
                             <th style="width: 20%; text-align:center;"><?php echo $this->Paginator->sort('Product.name', 'Tên sản phẩm'); ?></th>
+                            <th style="width: 5%; text-align:center;">Đường dẫn</th>
                             <th width="10%" style="text-align:center;"><?php echo $this->Paginator->sort('Product.code', 'Mã sản phẩm'); ?></th>
                             <th width="10%" style="text-align:center;"><?php echo $this->Paginator->sort('Product.price', 'Giá'); ?></th>
                             <th style="width: 3%; text-align:center;"><?php echo $this->Paginator->sort('Product.sl', 'Số lượng'); ?></th>
@@ -68,6 +69,7 @@
                             <th></th>
                             <th></th>
                             <th> <input type="text" name="name" id="field2c" value="<?php echo isset($name) ? $name : ""?>" class="filter" style="width: 150px;" ></th>
+                            <th></th>
                             <th><input type="text" name="code" id="field2c" value="<?php echo isset($code) ? $code : ""?>" class="filter" style="width: 70px;" ></th>
                             <th><input type="text" name="price" id="field2c" value="<?php echo isset($price) ? $price : ""?>" class="filter" style="width: 80px;" ></th>
                             <th><input type="text" name="sl" id="field2c" value="<?php echo isset($sl) ? $sl : ""?>" class="filter" style="width: 30px;" ></th>
@@ -88,6 +90,7 @@
                                     <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['Product']['images'];?>&amp;h=40&amp;w=40&amp;zc=1" />
                                 </td>
                                 <td><a href="<?php echo DOMAINAD ?>product/edit/<?php echo $value['Product']['id']; ?>" title="Edit"><?php echo $value['Product']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['Product']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
+                                <th><a target="blank" href="<?php echo DOMAIN ?>san-pham/<?php echo $value['Product']['alias']; ?>">Click here</a></th>
                                 <td><?php echo $value['Product']['code']; ?></td>
                                 <td><?php echo number_format($value['Product']['price']); ?></td>
                                 <td><?php echo $value['Product']['sl']; ?></td>
