@@ -79,15 +79,8 @@
                         <label>Vị trí</label>
                         <?php
                         $select_option = array(
-                            '1' =>'Trang chủ - Phía trên Video Hot (300x250)',
-                            '2' =>'Trang chủ - Giữa tin mới nhất (728x90)',
-                            '3' =>'Trang chủ - Cuối tin mới nhất (728x90)',
-                            '4' =>'Trang danh mục - Phía trên Video Hot (300x250)',
-                            '5' =>'Trang danh mục - Giữa tin mới nhất (728x90)',
-                            '6' =>'Trang danh mục - Cuối tin mới nhất (728x90)',
-                            '7' =>'Trang chi tiết - Phía trên Video Hot (300x250)',
-                            '8' =>'Trang chi tiết - Phía dưới player (728x90)',
-                            '9' =>'Trang chi tiết - Sau phần nội dung video (300x250)',
+                            '1' =>'Cột trái - Banner số 1 (300x300)',
+                            '2' =>'Cột trái - Banner số 2 (300x300)',
                         );
                         echo $this->Form->select('Advertisement.position', $select_option, array('label' => 'Vị trí quảng cáo','empty'=>'Chọn vị trí quảng cáo', 'class' => 'form-control')); ?>
                     </div>
