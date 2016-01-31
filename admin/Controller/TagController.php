@@ -1,16 +1,16 @@
 <?php
 /*
 **
-** Class xử lý phần quản lý danh mục sản phẩm
+** Class xử lý phần quản lý liên hệ
 ** author: Nguyễn Tất Lợi
 ** All rights reserved 
 ** date: 12/03/2012
 **
 */
-class ProductCategoryController extends AppController {
+class TagController extends AppController {
 
-    public $name = 'ProductCategory';
-    public $uses = array('ProductCategory','Tag');
+    public $name = 'Tag';
+    public $uses = array('Tag');
 
 	/*
 	**
@@ -32,9 +32,9 @@ class ProductCategoryController extends AppController {
 	**
 	*/
     public function index() {
-		$this->paginate = array('limit'=>15, 'order'=>'ProductCategory.id DESC');
-		$product_category = $this->paginate('ProductCategory');
-        $this->set('product_category', $product_category);
+		$this->paginate = array('limit'=>15, 'order'=>'Tag.id DESC');
+		$contact = $this->paginate('Tag');
+        $this->set('contact', $contact);
     }
 
 	
@@ -46,25 +46,13 @@ class ProductCategoryController extends AppController {
     public function add() {
 		$this->Session->setFlash(__('', true));
         if (!empty($this->request->data)) {	
-			if(empty($this->request->data['ProductCategory']['parent_id'])) $this->request->data['ProductCategory']['parent_id'] = 0;
-			if ($this->ProductCategory->save($this->request->data)){
+			if ($this->Tag->save($this->request->data)){
 				$this->Session->setFlash(__('Thêm mới thành công !', true));
 				$this->redirect(array('action' => 'index'));
 			}else{
 				$this->Session->setFlash(__('Hiện tại không thể thực hiện chức năng thêm mới. Mời thử lại !', true));
 			}
 		}
-        $tags = $this->Tag->find('all');
-        $tags_str = "";
-        foreach($tags as $tag) {
-            $tags_str .= "{value: {$tag['Tag']['id']}, label: '{$tag['Tag']['tag_name']}'},";
-        }
-        
-        $tags_str = rtrim($tags_str,',');
-        $this->set('tags_str', $tags_str);
-        
-        $list_cat = $this->get_category('ProductCategory');
-        $this->set('list_cat', $list_cat);
     }
 
 	/*
@@ -76,49 +64,18 @@ class ProductCategoryController extends AppController {
 	{
 		$this->Session->setFlash(__('', true));
 		if (!$id && empty($this->request->data)) {
-            $this->redirect(array('controller'=>'ProductCategory', 'action'=>'index'));
+            $this->redirect(array('controller'=>'Tag', 'action'=>'index'));
         }else if (!empty($this->request->data)) {
-            $data['ProductCategory'] = $this->request->data['ProductCategory'];
-            $tag_names = explode(',',$data['ProductCategory']['tags']);
-            $tag_arr = $this->Tag->find('list', array(
-                'conditions' => array(
-                    'Tag.tag_name' => $tag_names
-                )
-            ));
-            $data['ProductCategory']['tags'] = implode(',', $tag_arr);
-            if($data['ProductCategory']['parent_id'] == '') {
-                $data['ProductCategory']['parent_id'] = 0;
-            }
-            if ($this->ProductCategory->save($data['ProductCategory'])){
+            $data['Tag'] = $this->request->data['Tag'];
+            if ($this->Tag->save($data['Tag'])){
                 $this->Session->setFlash(__('Sửa thành công.', true));
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('Hiện tại hệ thống không thể sử dụng chức năng Edit, mời thử lại sau.', true));
             }
         }else if (empty($this->request->data)) {
-            $this->data = $this->ProductCategory->read(null, $id);
-            $tag_ids = $this->data['ProductCategory']['tags'];
-            $tags = $this->Tag->find('list', array(
-                        'fields' => array('tag_name'),
-                        'conditions' => array(
-                            'Tag.id' => explode(',', $tag_ids)
-                        )
-                    ));
-            $this->set('tag_ids', $tag_ids);
-            $this->set('tags_list', implode(',',$tags));
+            $this->data = $this->Tag->read(null, $id);
         }
-        $list_cat = $this->get_category('ProductCategory');
-        $this->set('list_cat', $list_cat);
-        
-        $tags = $this->Tag->find('all');
-        $tags_str = "";
-        foreach($tags as $tag) {
-            $tags_str .= "{value: '{$tag['Tag']['tag_name']}', label: '{$tag['Tag']['tag_name']}'},";
-        }
-        
-        $tags_str = rtrim($tags_str,',');
-        $this->set('tags_str', $tags_str);
-        
 	}
 
 	
@@ -131,10 +88,8 @@ class ProductCategoryController extends AppController {
 	{
 		$this->Session->setFlash(__('', true));
 		if(!empty($id)){
-			$data = $this->ProductCategory->read(null, $id);
+			$data = $this->Tag->read(null, $id);
 			$this->data = $data;
-            $list_cat = $this->get_category('ProductCategory');
-            $this->set('list_cat', $list_cat);
 			$this->render('add');
 		}else{
 			$this->redirect(array('action' => 'index'));	
@@ -149,7 +104,7 @@ class ProductCategoryController extends AppController {
     public function delete($id = null) {
 		$this->Session->setFlash(__('', true));
         if (!empty($id)){
-            $this->ProductCategory->delete($id);
+            $this->Tag->delete($id);
 			$this->Session->setFlash(__('Xóa liên hệ thành công', true));
 		}else{
 			$this->Session->setFlash(__('Hiện tại không thể sử dụng chức năng Delete', true));
@@ -171,7 +126,7 @@ class ProductCategoryController extends AppController {
 			foreach($data_action as $key=>$value){
 				$condition[] = $key;
 			}
-			if($this->ProductCategory->delete($condition)){
+			if($this->Tag->delete($condition)){
 				$this->Session->setFlash(__('Xóa tất cả thành công', true));
 			}else{
 				$this->Session->setFlash(__('Hiện tại không thể sử dụng chức năng Delete All', true));
@@ -190,7 +145,7 @@ class ProductCategoryController extends AppController {
 	{
 		$this->Session->setFlash(__('', true));
 		if (!empty($id)){
-            $this->ProductCategory->save(array('ProductCategory'=>array('status'=>1, 'id'=>$id)));
+            $this->Tag->save(array('Tag'=>array('status'=>1, 'id'=>$id)));
 			$this->Session->setFlash(__('Active thành công', true));
 		}else{
 			$this->Session->setFlash(__('Hiện tại không thể sử dụng chắc năng Active', true));
@@ -212,7 +167,7 @@ class ProductCategoryController extends AppController {
 			foreach($data_action as $key=>$value){
 				$condition[] = $key;
 			}
-			if($this->ProductCategory->updateAll(array('status'=>1), array('ProductCategory.id'=>$condition))){
+			if($this->Tag->updateAll(array('status'=>1), array('Tag.id'=>$condition))){
 				$this->Session->setFlash(__('Active tất cả thành công', true));
 			}else{
 				$this->Session->setFlash(__('Hiện tại không thể sử dụng chức năng Active All', true));
@@ -231,7 +186,7 @@ class ProductCategoryController extends AppController {
 	{
 		$this->Session->setFlash(__('', true));
 		if (!empty($id)){
-            $this->ProductCategory->save(array('ProductCategory'=>array('status'=>0, 'id'=>$id)));
+            $this->Tag->save(array('Tag'=>array('status'=>0, 'id'=>$id)));
 			$this->Session->setFlash(__('Close thành công', true));
 		}else{
 			$this->Session->setFlash(__('Hiện tại không thể thực hiện chức năng Close', true));
@@ -252,7 +207,7 @@ class ProductCategoryController extends AppController {
 			foreach($data_action as $key=>$value){
 				$condition[] = $key;
 			}
-			if($this->ProductCategory->updateAll(array('status'=>0), array('ProductCategory.id'=>$condition))){
+			if($this->Tag->updateAll(array('status'=>0), array('Tag.id'=>$condition))){
 				$this->Session->setFlash(__('Close tất cả thành công', true));
 			}else{
 				$this->Session->setFlash(__('Hiện tại không thể sử dụng chức năng Close All', true));
@@ -298,17 +253,17 @@ class ProductCategoryController extends AppController {
 			$keyword = $this->request->data['keyword'];
 			$conditions = array(
 						'or'=>array(
-							'ProductCategory.name like "%'.$keyword.'%"',
-							'ProductCategory.name_en like "%'.$keyword.'%"',
+							'Tag.name like "%'.$keyword.'%"',
+							'Tag.email like "%'.$keyword.'%"',
 						)
 					); 
 			$this->paginate = array(
 					'conditions'=>$conditions,
 					'limit'=>15,
-					'order'=>'ProductCategory.id DESC, ProductCategory.modified DESC'
+					'order'=>'Tag.id DESC, Tag.modified DESC'
 			);
-			$product_category = $this->paginate('ProductCategory');
-        	$this->set('product_category', $product_category);
+			$contact = $this->paginate('Tag');
+        	$this->set('contact', $contact);
 			$this->render('index');
 		}else{
 			$this->redirect(array('action'=>'index'));

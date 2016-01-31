@@ -32,7 +32,7 @@ class ProductController extends AppController {
 
     public $name = 'Product';
 
-    public $uses = array('Product', 'ProductCategory', 'ProductLink');
+    public $uses = array('Product', 'ProductCategory', 'ProductLink','Tag');
 
 
 
@@ -265,6 +265,15 @@ class ProductController extends AppController {
         $list_cat = $this->get_category('ProductCategory');
 
         $this->set('list_cat', $list_cat);
+        
+        $tags = $this->Tag->find('all');
+        $tags_str = "";
+        foreach($tags as $tag) {
+            $tags_str .= "{value: '{$tag['Tag']['tag_name']}', label: '{$tag['Tag']['tag_name']}'},";
+        }
+        
+        $tags_str = rtrim($tags_str,',');
+        $this->set('tags_str', $tags_str);
 
     }
 
@@ -293,12 +302,16 @@ class ProductController extends AppController {
         } else if (!empty($this->request->data)) {
 
             $data = $this->request->data;
-
-            if (!empty($data['link_free'])) {
-
-                $data['Product']['link_free'] = implode("|", $data['link_free']);
-
-            }
+            
+            $tag_ids = $data['Product']['tags'];
+            $tags = $this->Tag->find('list', array(
+                        'fields' => array('tag_name'),
+                        'conditions' => array(
+                            'Tag.id' => explode(',', $tag_ids)
+                        )
+                    ));
+            $this->set('tag_ids', $tag_ids);
+            $this->set('tags_list', implode(',',$tags));
 
             if (empty($data['Product']['product_category_id'])) {
 
@@ -312,37 +325,6 @@ class ProductController extends AppController {
 
                     $product_id = $data['Product']['id'];
 
-                    // $this->ProductLink->deleteAll(array('ProductLink.product_id' => $product_id));
-
-                    // if (!empty($data['link_charge'])) {
-
-                    //     $product_link = array();
-
-
-
-                    //     $i = 0;
-
-                    //     foreach ($data['link_charge'] as $key => $value) {
-
-                    //         $product_link[] = array(
-
-                    //             'id' => false,
-
-                    //             'product_id' => $product_id,
-
-                    //             'link_name' => "Link " . $data['Product']['name'] . " " . ($i + 1),
-
-                    //             'link_href' => $value
-
-                    //         );
-
-                    //         $i++;
-
-                    //     }
-
-                    //     $this->ProductLink->saveAll($product_link);
-
-                    // }
 
                     $this->Session->setFlash(__('Sửa thành công.', true));
 
@@ -357,7 +339,7 @@ class ProductController extends AppController {
             }
 
         } else if (empty($this->request->data)) {
-
+            
             $this->data = $this->Product->read(null, $id);
 
         }
@@ -366,7 +348,14 @@ class ProductController extends AppController {
 
         $this->set('list_cat', $list_cat);
 
-
+        $tags = $this->Tag->find('all');
+        $tags_str = "";
+        foreach($tags as $tag) {
+            $tags_str .= "{value: '{$tag['Tag']['tag_name']}', label: '{$tag['Tag']['tag_name']}'},";
+        }
+        
+        $tags_str = rtrim($tags_str,',');
+        $this->set('tags_str', $tags_str);
 
         // $list_link = $this->ProductLink->findAllByProductId($id);		//echo "<pre>";		//var_dump($list_link);
 

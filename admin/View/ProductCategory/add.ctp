@@ -129,7 +129,7 @@
           //Note: the tags here can be split by any of the trigger keys
           //      as tagit will split on the trigger keys anything passed  
           var currentTags = input.val();
-
+          
           //Hide the input and append tagit to the dom
           input.hide().after(instance);
 
@@ -141,7 +141,6 @@
               //Get the tags            
               var tags = instance.tagit('tags');
               var tagString = [];
-
               //Pull out only value
               for (var i in tags){
                 tagString.push(tags[i].value);
@@ -157,11 +156,12 @@
 
         });
 </script>
-
                 <div class="form-group">
                     <label>Tags</label>
                     <?php echo $this->Form->input('ProductCategory.tags', array( 'type' => 'hidden', 'label' => '', 'class' => 'form-control')); ?>
-                    
+                    <ul id="tags-available">
+                        
+                    </ul>
                 </div>
 
                 </div><!-- /.box-body -->

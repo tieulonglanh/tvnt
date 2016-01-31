@@ -111,68 +111,6 @@ echo $this->Html->script('ckeditor/ckeditor');
                         <?php echo $this->Form->input('Product.price', array('label' => '', 'class' => 'form-control')); ?>
                     </div>
 
-                            <div class="form-group">
-                                <label>Link download free</label>
-								<?php
-                                $link_free = explode('|', $this->data['Product']['link_free']);
-                                ?>
-                                <input name="link_free[]" class="form-control" type="text" value="<?php if(!empty($link_free)) echo $link_free[0]; ?>"/>
-                                <input type="button" value="Thêm link" onclick="add_link_free();" class="btn btn-sm btn-default" />
-                                
-                                <div class="list_link_free">
-                                    <?php if(!empty($link_free) && count($link_free) > 1){
-
-                                        $i = 1;
-
-                                        foreach($link_free as $key => $value){
-                                            if($key > 0){
-                                                ?>
-                                                <div class="link_free_row" id="link_free_row_<?php echo $i; ?>">
-                                                    <input name="link_free[]" value="<?php echo $value; ?>" class="form-control" type="text">
-                                                    <input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free">
-                                                </div><!--end .link_free_row-->
-                                                <?php
-
-                                                $i++;
-
-                                            }
-                                        }
-                                    }?>
-                                </div><!--end .list_link_free-->
-                            </div>
-
-                            <div class="form-group">
-                                <label>Link download trả phí</label>
-                                <?php
-                                $link_charge = array();
-                                if(!empty($list_link)){ foreach($list_link as $key => $value){
-                                    $link_charge[] = $value['ProductLink']['link_href'];
-                                }}
-                                ?>
-								<input name="link_charge[]" value="<?php if(!empty($link_charge)) echo $link_charge[0]; ?>" class="form-control" type="text" />
-								<input type="button" value="Thêm link" onclick="add_link_charge();" class="btn btn-sm btn-default" />
-                                <div class="list_link_charge">
-                                    <?php if(!empty($link_charge) && count($link_charge) > 1){
-                                        foreach($link_charge as $key => $value){
-											if($key > 0){
-                                                ?>
-                                                <div class="link_free_row">
-                                                    <input name="link_charge[]" value="<?php echo $value; ?>" class="form-control" type="text">
-                                                    <input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free">
-                                                </div>
-                                            <?php
-											}
-                                        }
-                                    }?>
-                                </div><!--end .list_link_free-->
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('.list_link_charge, .list_link_free').delegate('.more_link_free', 'click', function () {
-                                            $(this).parents(".link_free_row").remove();
-                                        });
-                                    });
-                                </script>
-                            </div>
 
                     <div class="form-group">
                         <label>Hình đại diện</label>
@@ -207,19 +145,29 @@ echo $this->Html->script('ckeditor/ckeditor');
                         <?php
                         echo $this->Form->radio(
                             'Product.status',
-                            array(0=>'&nbspNgừng hoạt động&nbsp&nbsp&nbsp&nbsp&nbsp', 1=>'&nbspHoạt động'),
-                            array('legend'=>false, 'style'=>'float: left; cursor: pointer; margin-left: 20px;', 'value'=>1)
+                            array(0=>'&nbsp;Ngừng hoạt động&nbsp;', 1=>'&nbsp;Hoạt động&nbsp;'),
+                            array('legend'=>false)
                         );
                         ?>
                     </div>
-
+                            
+                    <div class="form-group">
+                        <label>Sản phẩm bán chạy&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                        <?php
+                        echo $this->Form->radio(
+                            'Product.hot_product',
+                            array(0=>'&nbsp;Không&nbsp;', 1=>'&nbsp;Có&nbsp;'),
+                            array('legend'=>false)
+                        );
+                        ?>
+                    </div>
 
                     <div class="form-group">
                         <label>Mô tả sản phẩm</label>
                         <?php
                         $CKEditor = new CKEditor();
                         $CKEditor->returnOutput = true;
-                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor/";
                         $CKEditor->config['width'] = '98%';
                         $CKEditor->config['height'] = '200';
                         $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
@@ -240,7 +188,7 @@ echo $this->Html->script('ckeditor/ckeditor');
                         <?php
                         $CKEditor = new CKEditor();
                         $CKEditor->returnOutput = true;
-                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor/";
                         $CKEditor->config['width'] = '98%';
                         $CKEditor->config['height'] = '300';
                         $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
@@ -253,6 +201,54 @@ echo $this->Html->script('ckeditor/ckeditor');
 
                 </div><!-- /.box-body -->
 
+                <script>
+                    $(document).ready(function(){
+                        var availableTags = [<?php echo $tags_str ?>];
+
+                      //The text input
+                      var input = $("input#ProductTags");
+
+                      //The tagit list
+                      var instance = $("<ul class=\"tags\"></ul>");
+
+                      //Store the current tags
+                      //Note: the tags here can be split by any of the trigger keys
+                      //      as tagit will split on the trigger keys anything passed  
+                      var currentTags = input.val();
+
+                      //Hide the input and append tagit to the dom
+                      input.hide().after(instance);
+
+                      //Initialize tagit
+                      instance.tagit({
+                        tagSource:availableTags,
+                        tagsChanged:function () {
+
+                          //Get the tags            
+                          var tags = instance.tagit('tags');
+                          var tagString = [];
+                          //Pull out only value
+                          for (var i in tags){
+                            tagString.push(tags[i].value);
+                          }
+
+                          //Put the tags into the input, joint by a ','
+                          input.val(tagString.join(','));
+                        }
+                      });
+
+                      //Add pre-loaded tags to tagit
+                      instance.tagit('add', currentTags);
+
+                    });
+            </script>
+            
+             <div class="form-group">
+                    <label>Tags</label>
+                    <?php echo $this->Form->input('Product.tags', array( 'type' => 'hidden', 'label' => '', 'class' => 'form-control')); ?>
+                    
+                </div>
+                
                 <div class="box-footer">
                     <a href="javascript:void(0);" onclick="javascript:document.image.submit();" class="btn btn-primary"> <span class="icon-32-save"></span> Lưu </a>
                     <a href="javascript:void(0);" class="btn btn-primary" onclick="javascript:document.image.reset();"> <span class="icon-32-refresh"> </span> Làm mới </a>
@@ -289,34 +285,5 @@ echo $this->Html->script('ckeditor/ckeditor');
         $('#'+DIV).html('');
     }
 
-    function add_link_free()
-    {
-        var html = '';
-        html += '<div class="link_free_row">';
-        html += '    <input name="link_free[]" class="form-control" type="text"/>';
-        html += '<input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free" />';
-        html += '</div><!--end .link_free_row-->';
-
-        $('.list_link_free').append(html);
-
-    }
-
-    function add_link_charge()
-    {
-        var html = '';
-        html += '<div class="link_free_row">';
-        html += '<input name="link_charge[]" class="form-control" type="text" />';
-        html += '<input type="button" value="Xoá link" class="btn btn-sm btn-default more_link_free" />';
-        html += '</div><!--end .link_free_row-->';
-
-        $('.list_link_charge').append(html);
-
-    }
-
-    $(document).ready(function(){
-        $('.more_link_free').live('click',function() {
-            $(this).parent().html('');
-        });
-    });
     
 </script>

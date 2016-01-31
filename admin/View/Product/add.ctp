@@ -62,6 +62,13 @@ echo $this->Html->script('ckeditor/ckeditor');
                     </div>
                     
                     <div class="form-group">
+                        <label for="idalias">Đường dẫn</label>
+
+                        <?php echo $this->Form->input('Product.alias', array('label' => '', 'class' => 'form-control', 'id' => 'idalias')); ?>
+                    </div>
+
+                    
+                    <div class="form-group">
                         <label for="name_en">SEO Title</label>
                         <?php echo $this->Form->input('Product.name_en', array('label' => '', 'class' => 'form-control', 'id' => 'name_en')); ?>
                     </div>
@@ -79,12 +86,7 @@ echo $this->Html->script('ckeditor/ckeditor');
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="idalias">Đường dẫn</label>
-
-                        <?php echo $this->Form->input('Product.alias', array('label' => '', 'class' => 'form-control', 'id' => 'idalias')); ?>
-                    </div>
-
+                    
                     <div class="form-group">
                         <label>Meta description</label>
                         <?php echo $this->Form->input('Product.meta_description', array('type' => 'textarea', 'label' => '', 'class' => 'form-control', 'style' => 'resize: none;')); ?>
@@ -109,20 +111,6 @@ echo $this->Html->script('ckeditor/ckeditor');
                     <div class="form-group">
                         <label>Giá sản phẩm</label>
                         <?php echo $this->Form->input('Product.price', array('label' => '', 'class' => 'form-control')); ?>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Link download free</label>
-                        <input name="link_free[]" class="form-control" type="text" />
-                        <input type="button" value="Thêm link" onclick="add_link_free();" class="btn btn-sm btn-default" />
-                        <div class="list_link_free"></div><!--end .list_link_free-->
-                    </div>
-
-                    <div class="form-group">
-                        <label>Link download trả phí</label>
-                        <input name="link_charge[]" class="form-control" type="text" />
-                        <input type="button" value="Thêm link" onclick="add_link_charge();" class="btn btn-sm btn-default" />
-                        <div class="list_link_charge"></div><!--end .list_link_free-->
                     </div>
 
                     <div class="form-group">
@@ -158,7 +146,18 @@ echo $this->Html->script('ckeditor/ckeditor');
                         echo $this->Form->radio(
                             'Product.status',
                             array(0=>'&nbspNgừng hoạt động&nbsp&nbsp&nbsp&nbsp&nbsp', 1=>'&nbspHoạt động'),
-                            array('legend'=>false, 'style'=>'float: left; cursor: pointer; margin-left: 20px;', 'value'=>1)
+                            array('legend'=>false, 'value'=>1)
+                        );
+                        ?>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label>Sản phẩm bán chạy&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                        <?php
+                        echo $this->Form->radio(
+                            'Product.hot_product',
+                            array(0=>'&nbsp;Không&nbsp;', 1=>'&nbsp;Có&nbsp;'),
+                            array('legend'=>false, 'value'=>0)
                         );
                         ?>
                     </div>
@@ -168,7 +167,7 @@ echo $this->Html->script('ckeditor/ckeditor');
                         <?php
                         $CKEditor = new CKEditor();
                         $CKEditor->returnOutput = true;
-                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor/";
                         $CKEditor->config['width'] = '100%';
                         $CKEditor->config['height'] = '200';
                         $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
@@ -190,7 +189,7 @@ echo $this->Html->script('ckeditor/ckeditor');
                         <?php
                         $CKEditor = new CKEditor();
                         $CKEditor->returnOutput = true;
-                        $CKEditor->basePath = DOMAINAD . "js/ckeditor";
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor/";
                         $CKEditor->config['width'] = '100%';
                         $CKEditor->config['height'] = '300';
                         $CKEditor->textareaAttributes = array("rows" => 8, "cols" => 160);
@@ -204,6 +203,55 @@ echo $this->Html->script('ckeditor/ckeditor');
                     </div>
 
                 </div><!-- /.box-body -->
+                
+                <script>
+                    $(document).ready(function(){
+                        var availableTags = [<?php echo $tags_str ?>];
+
+                      //The text input
+                      var input = $("input#ProductTags");
+
+                      //The tagit list
+                      var instance = $("<ul class=\"tags\"></ul>");
+
+                      //Store the current tags
+                      //Note: the tags here can be split by any of the trigger keys
+                      //      as tagit will split on the trigger keys anything passed  
+                      var currentTags = input.val();
+
+                      //Hide the input and append tagit to the dom
+                      input.hide().after(instance);
+
+                      //Initialize tagit
+                      instance.tagit({
+                        tagSource:availableTags,
+                        tagsChanged:function () {
+
+                          //Get the tags            
+                          var tags = instance.tagit('tags');
+                          var tagString = [];
+                          //Pull out only value
+                          for (var i in tags){
+                            tagString.push(tags[i].value);
+                          }
+
+                          //Put the tags into the input, joint by a ','
+                          input.val(tagString.join(','));
+                        }
+                      });
+
+                      //Add pre-loaded tags to tagit
+                      instance.tagit('add', currentTags);
+
+                    });
+            </script>
+            
+             <div class="form-group">
+                    <label>Tags</label>
+                    <?php echo $this->Form->input('Product.tags', array( 'type' => 'hidden', 'label' => '', 'class' => 'form-control')); ?>
+                    
+                </div>
+
 
                 <div class="box-footer">
                     <a href="javascript:void(0);" onclick="javascript:document.image.submit();" class="btn btn-primary"> <span class="icon-32-save"></span> Lưu </a>
@@ -243,33 +291,4 @@ function CloseImages(DIV){
 	$('#'+DIV).html('');
 }
 
-    function add_link_free()
-    {
-        var html = '';
-        html += '<div class="link_free_row">';
-        html += '    <input name="link_free[]" class="text-input medium-input" type="text" style="margin-left: 20px;" />';
-        html += '<input type="button" value="Xoá link" class="button more_link_free" />';
-        html += '</div><!--end .link_free_row-->';
-
-        $('.list_link_free').append(html);
-
-    }
-
-    function add_link_charge()
-    {
-        var html = '';
-        html += '<div class="link_free_row">';
-        html += '<input name="link_charge[]" class="text-input medium-input" type="text" style="margin-left: 20px;" />';
-        html += '<input type="button" value="Xoá link" class="button more_link_free" />';
-        html += '</div><!--end .link_free_row-->';
-
-        $('.list_link_charge').append(html);
-
-    }
-
-$(document).ready(function(){
-    $('.more_link_free').live('click',function() {
-        $(this).parent().html('');
-    });
-});
 </script>
