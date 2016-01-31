@@ -1,8 +1,8 @@
 <section class="content-header" xmlns="http://www.w3.org/1999/html">
-    <h1>Danh sách danh mục tin tức</h1>
+    <h1>Danh sách Menu</h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo DOMAINAD ?>" ><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li class="active">Tin tức</li>
+        <li class="active">Menu</li>
     </ol>
 </section>
 
@@ -13,7 +13,7 @@
             <div class="box-header">
                 <div class="input-group">
                     <div class="input-group-btn">
-                        <a href="<?php echo DOMAINAD; ?>news_category/add" class="btn btn-sm btn-success" ><i class="fa fa-fw fa-plus-circle"></i> Thêm mới </a>
+                        <a href="<?php echo DOMAINAD; ?>menu/add" class="btn btn-sm btn-success" ><i class="fa fa-fw fa-plus-circle"></i> Thêm mới </a>
                         <a href="#messages" rel="modal" class="btn btn-sm btn-success" ><i class="fa fa-fw fa-question"></i> Trợ giúp </a>
                         <a href="<?php echo DOMAINAD; ?>home" class="btn btn-sm btn-success"><i class="fa fa-fw fa-times-circle"></i> Đóng </a>
                     </div>
@@ -22,7 +22,7 @@
             <!-- /.box-header -->
 
             <div class="content-box-header">
-                <?php echo $this->Form->create(null, array('url' => DOMAINAD . 'news_category/search', 'type' => 'post', 'name' => 'frm_search')); ?>
+                <?php echo $this->Form->create(null, array('url' => DOMAINAD . 'menu/search', 'type' => 'post', 'name' => 'frm_search')); ?>
                 <div class="input-group-btn">
                     <button type="submit" class="btn btn-sm btn-danger pull-left" style="margin-right: 5px"/><i class="fa fa-fw fa-search-plus"></i>Tìm kiếm</button>
                     <input type="text" name="keyword" value="" class="form-control input-sm pull-left" style="width: 250px;" placeholder="Tìm kiếm">
@@ -32,7 +32,7 @@
 
             <div class="box">
                 <div class="box-body table-responsive no-padding">
-                    <?php echo $this->Form->create(null, array('url' => DOMAINAD . 'news_category/action_all', 'type' => 'post', 'name' => 'frm_list')); ?>
+                    <?php echo $this->Form->create(null, array('url' => DOMAINAD . 'menu/action_all', 'type' => 'post', 'name' => 'frm_list')); ?>
 
                     <?php $error = $this->Session->flash(); ?>
                     <?php if (strlen($error) > 45): ?>
@@ -48,13 +48,13 @@
                         <tr>
                             <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
                             <th width="4%">STT</th>
-                            <th width="20%">Ảnh đại diện</th>
-                            <th width="20%" style="text-align:center;"><?php echo $this->Paginator->sort('NewsCategory.name', 'Tên danh mục'); ?></th>
-                            <th width="20%"><?php echo $this->Paginator->sort('NewsCategory.parent_id', 'Danh mục cha'); ?></th>
-                            <th width="11%"><?php echo $this->Paginator->sort('NewsCategory.sort_order', 'Sắp xếp'); ?></th>
-                            <th width="11%"><?php echo $this->Paginator->sort('NewsCategory.modified', 'Thay đổi'); ?></th>
+                            <th width="20%">Icon Menu</th>
+                            <th width="20%" style="text-align:center;"><?php echo $this->Paginator->sort('Menu.name', 'Tên danh mục'); ?></th>
+                            <th width="20%"><?php echo $this->Paginator->sort('Menu.parent_id', 'Danh mục cha'); ?></th>
+                            <th width="11%"><?php echo $this->Paginator->sort('Menu.type', 'Sắp xếp'); ?></th>
+                            <th width="11%"><?php echo $this->Paginator->sort('Menu.created', 'Ngày Tạo'); ?></th>
                             <th width="12%">Xử lý</th>
-                            <th width="3%"><?php echo $this->Paginator->sort('NewsCategory.id', 'Mã'); ?></th>
+                            <th width="3%"><?php echo $this->Paginator->sort('Menu.id', 'Mã'); ?></th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -97,35 +97,25 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <?php foreach ($news_category as $key => $value) {  ?>
+                        <?php foreach ($menu as $key => $value) {  ?>
                             <tr>
-                                <td><input type="checkbox" name="chose_active[<?php echo $value['NewsCategory']['id']; ?>]" /></td>
+                                <td><input type="checkbox" name="chose_active[<?php echo $value['Menu']['id']; ?>]" /></td>
                                 <td><?php echo $key+1; ?></td>
                                 <td>
-                                    <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['NewsCategory']['images'];?>&amp;h=100&amp;w=100&amp;zc=1" />
+                                    <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['Menu']['icon'];?>&amp;h=100&amp;w=100&amp;zc=1" />
                                 </td>
-                                <td><a href="<?php echo DOMAINAD ?>news_category/edit/<?php echo $value['NewsCategory']['id']; ?>" title="Edit"><?php echo $value['NewsCategory']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['NewsCategory']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
+                                <td><a href="<?php echo DOMAINAD ?>menu/edit/<?php echo $value['Menu']['id']; ?>" title="Edit"><?php echo $value['Menu']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['Menu']['created'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
                                 <td style="text-align:center;">
-                                    <?php echo $value['NewsCategory']['sort_order']; ?>
+                                    <?php $type_arr = array(0 => 'Menu trái', 1 => 'Menu ngang', 2 => 'Menu footer'); echo $type_arr[$value['Menu']['type']]; ?>
                                 </td>
                                 <td style="text-align:center;"><?php echo $value['Parent']['name']; ?></td>
                                 <td>
-                                    <?php echo date('d-m-Y', strtotime($value['NewsCategory']['modified'])); ?></td>
+                                    <?php echo date('d-m-Y', strtotime($value['Menu']['created'])); ?></td>
                                 <td>
-                                    <a href="<?php echo DOMAINAD ?>news_category/copy/<?php echo $value['NewsCategory']['id']; ?>" title="Copy"><img src="<?php echo DOMAINAD ?>images/icons/copy.png" alt="Copy" /></a>
-                                    <a href="<?php echo DOMAINAD ?>news_category/edit/<?php echo $value['NewsCategory']['id']; ?>" title="Edit"><img src="<?php echo DOMAINAD ?>images/icons/pencil.png" alt="Edit" /></a> <a href="javascript:confirmDelete('<?php echo DOMAINAD ?>news_category/delete/<?php echo $value['NewsCategory']['id']; ?>')" title="Delete"><img src="<?php echo DOMAINAD ?>images/icons/cross.png" alt="Delete" /></a>
-                                    <?php
-                                    if ($value['NewsCategory']['status'] == 0) {
-                                        ?>
-                                        <a href="<?php echo DOMAINAD ?>news_category/active/<?php echo $value['NewsCategory']['id']; ?>" title="Kích hoạt" class="icon-5 info-tooltip"><img src="<?php echo DOMAINAD ?>images/icons/Play-icon.png" alt="Kích hoạt" /></a>
-                                    <?php
-                                    } else {
-                                        ?>
-                                        <a href="<?php echo DOMAINAD ?>news_category/close/<?php echo $value['NewsCategory']['id']; ?>" title="Đóng" class="icon-4 info-tooltip"><img src="<?php echo DOMAINAD ?>images/icons/success-icon.png" alt="Ngắt kích hoạt" /></a>
-                                    <?php
-                                    }
-                                    ?></td>
-                                <td align="right"><?php echo $value['NewsCategory']['id']; ?></td>
+                                    <a href="<?php echo DOMAINAD ?>menu/copy/<?php echo $value['Menu']['id']; ?>" title="Copy"><img src="<?php echo DOMAINAD ?>images/icons/copy.png" alt="Copy" /></a>
+                                    <a href="<?php echo DOMAINAD ?>menu/edit/<?php echo $value['Menu']['id']; ?>" title="Edit"><img src="<?php echo DOMAINAD ?>images/icons/pencil.png" alt="Edit" /></a> <a href="javascript:confirmDelete('<?php echo DOMAINAD ?>menu/delete/<?php echo $value['Menu']['id']; ?>')" title="Delete"><img src="<?php echo DOMAINAD ?>images/icons/cross.png" alt="Delete" /></a>
+                                    </td>
+                                <td align="right"><?php echo $value['Menu']['id']; ?></td>
                             </tr>
                         <?php } ?>
                         </tbody>

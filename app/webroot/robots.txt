@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /admins/
-Allow: /admin/webroot/upload/

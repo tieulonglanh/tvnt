@@ -84,15 +84,8 @@
                                 <td>
                                     <?php
                                     switch ($value['Advertisement']['position']){
-                                        case 1: echo 'Trang chủ - Phía trên Video Hot (300x250)'; break;
-                                        case 2: echo 'Trang chủ - Giữa tin mới nhất (728x90)'; break;
-                                        case 3: echo 'Trang chủ - Cuối tin mới nhất (728x90)'; break;
-                                        case 4: echo 'Trang danh mục - Phía trên Video Hot (300x250)'; break;
-                                        case 5: echo 'Trang danh mục - Giữa tin mới nhất (728x90)';break;
-                                        case 6: echo 'Trang danh mục - Cuối tin mới nhất (728x90)';break;
-                                        case 7: echo 'Trang chi tiết - Phía trên Video Hot (300x250)';break;
-                                        case 8: echo 'Trang chi tiết - Phía dưới player (728x90)';break;
-                                        case 9: echo 'Trang chi tiết - Sau phần nội dung video (300x250)';break;
+                                        case 1: echo 'Cột trái - Banner số 1 (300x300)'; break;
+                                        case 2: echo 'Cột trái - Banner số 2 (300x300)'; break;
                                     }
                                     ?>
                                 </td>
