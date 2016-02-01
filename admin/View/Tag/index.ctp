@@ -64,7 +64,7 @@
                         <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                             <th width="4%">STT</th>
                             <th width="20%" style="text-align:center;"><?php echo $this->Paginator->sort('Tag.tag_name', 'Tên liên hệ'); ?></th>
-                            <th width="11%"><?php echo $this->Paginator->sort('Tag.created', 'Thay đổi'); ?></th>
+                            <th width="11%"><?php echo $this->Paginator->sort('Tag.created', 'Tạo ngày'); ?></th>
                             <th width="12%">Xử lý</th>
                             <th width="3%"><?php echo $this->Paginator->sort('Tag.id', 'Mã'); ?></th>
                         </thead>
