@@ -28,9 +28,9 @@
 <div id="util">
     <div class="share">
     <ul class="social_icons">
-             <li><a onclick="window.open(&#39;http://twitter.com/home?status &#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;twitter-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img title="facebook" alt="" src="images/icon/follow_icon1.png"></a></li>
-             <li><a onclick="window.open(&#39;https://plus.google.com/share?url=&#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;google-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img alt="" src="images/icon/follow_icon2.png"></a></li>
-             <li><a onclick="window.open(&#39;https://www.facebook.com/sharer/sharer.php?u=&#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;facebook-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img alt="" src="images/icon/follow_icon3.png"></a></li>
+             <li><a onclick="window.open(&#39;http://twitter.com/home?status &#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;twitter-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img title="facebook" alt="" src="<?php echo DOMAIN?>images/icon/follow_icon1.png"></a></li>
+             <li><a onclick="window.open(&#39;https://plus.google.com/share?url=&#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;google-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img alt="" src="<?php echo DOMAIN?>images/icon/follow_icon2.png"></a></li>
+             <li><a onclick="window.open(&#39;https://www.facebook.com/sharer/sharer.php?u=&#39;+encodeURIComponent(&#39;http://newfuturegraphics.org/&#39;), &#39;facebook-share-dialog&#39;, &#39;width=626,height=436&#39;); return false;" href="http://newfuturegraphics.org/#"><img alt="" src="<?php echo DOMAIN?>images/icon/follow_icon3.png"></a></li>
         </ul>
     
     </div>

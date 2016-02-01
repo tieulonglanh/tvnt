@@ -19,7 +19,7 @@
 				Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
 				</a>
 				<div style="    margin-top: 5px;">
-					<img src="images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
+					<img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
 				</div>
 	  		</div>
 	  		<div style="padding-top: 20px;">
@@ -27,7 +27,7 @@
 				Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
 				</a>
 				<div style="    margin-top: 5px;">
-					<img src="images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
+					<img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
 				</div>
 	  		</div>
 	  		<div style="padding-top: 20px;">
@@ -35,7 +35,7 @@
 				Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
 				</a>
 				<div style="    margin-top: 5px;">
-					<img src="images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
+					<img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
 				</div>
 	  		</div>
 	  		<div style="padding-top: 20px;">
@@ -43,7 +43,7 @@
 				Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
 				</a>
 				<div style="    margin-top: 5px;">
-					<img src="images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
+					<img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
 				</div>
 	  		</div>
 			
