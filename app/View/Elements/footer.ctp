@@ -77,8 +77,8 @@
     </div>
 
     <div style="border-top: 1px #4c5458 solid;width: 100%;line-height: 52px;">
-        <div style="padding-left: 40px;color:#fff;font-size: 14px;">
-            © 2016 New Future Graphics & <a href="http://www.baobinh.net/danh-muc-giao-dien/6/website-ban-hang" style="color:#fff">Website bán hàng bởi baobinh.net</a>
+        <div style="padding-left: 40px;color:#fff;">
+            © 2016 New Future Graphics & <a href="http://baobinh.net/" style="color:#fff">design by baobinh.net</a>
         </div>
         
     </div>

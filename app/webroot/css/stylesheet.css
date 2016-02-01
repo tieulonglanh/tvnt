@@ -410,7 +410,7 @@ margin-top:10px;
     border-radius: 4px;
     box-shadow: 1px 2px 5px #A1A1A1;
     clear: both;
-    margin-left:8px;
+    margin-left:3px;
     height: 42px;
     margin-bottom: 4px;
     -webkit-box-shadow: 0 0 7px #A1A1A1;
@@ -1351,11 +1351,11 @@ background: #FFFFFF;
 	padding: 0;
 }
 .box1{
-	border:1px solid #BBBBBB;
+	/*border:1px solid #BBBBBB;*/
 	margin-bottom:14px;
-	-webkit-box-shadow: 0 0 7px #A1A1A1;
+	/*-webkit-box-shadow: 0 0 7px #A1A1A1;
 	-moz-box-shadow: 0 0 7px #A1A1A1;
-	box-shadow: 0 0 7px #A1A1A1;
+	box-shadow: 0 0 7px #A1A1A1;*/
 	border-radius:4px ;
 	-webkit-border-radius: 6px ;
 	-moz-border-radius: 6px ;
@@ -1374,9 +1374,9 @@ background: #FFFFFF;
     text-transform: uppercase;
 }
 .box1 .box-category > ul > li p {
-	-webkit-box-shadow: 0 0 3px #D6D6D6;
+	/*-webkit-box-shadow: 0 0 3px #D6D6D6;
     -moz-box-shadow: 0 0 3px #D6D6D6;
-    box-shadow: 0 0 3px #D6D6D6;
+    box-shadow: 0 0 3px #D6D6D6;*/
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -2304,7 +2304,7 @@ background: #FFFFFF;
 
 #footer {
 		    width: 1170px;
-	float: left;
+	
 	background: #3b4348;
 	/*padding: 30px 20px 30px 10px;*/
     margin: 0px auto;

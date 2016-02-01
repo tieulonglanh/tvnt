@@ -19,81 +19,32 @@ $(document).ready(function() {
 });
 --></script>            
 
-  <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3dsmax-2015">Update thư viện mới 2015</a></div>
-  <div id="tab-1">
-    <ul class="tab-1">
-        <li ><a href="ajax1" title="">nội thất </a></li>
-        <li ><a href="ajax2" title="">ngoại thất </a></li>
-    </ul>
-  
-  <div id="tabs-1" class="box-content">
-     
-    </div>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('#tabs-1').load('content/ajax1.htm');
-
-        $('#tab-1>ul>li a').click(function(){
-            var tab = $(this).attr('href');
-            $('#tabs-1').load('content/'+ tab +'.htm');
-            return false;
-        });
-    })
-</script>
-    
-  </div>
-
-</div>                                   
-       
-      
-            
- 
-
+<?php
+  $i=0;
+ foreach ($cat_product as $key => $value) {
+  $i++;
+?>
    <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/models-maps-hdri-materials">Models, Maps, HDRI, Materials</a></div>
-  <div id="tab-2">
+  <div class="box-heading"><a target="_blank" href=""><?php echo $value['ProductCategory']['name']?></a></div>
+  <div id="tab-<?php echo $i?>">
     <ul class="tab-1">
-        <li ><a href="ajax3" title="">nội thất </a></li>
-        <li ><a href="ajax4" title="">ngoại thất </a></li>
+    <?php foreach ($mang[$value['ProductCategory']['id']] as $key => $row) {
+    ?>
+        <li ><a href="<?php echo DOMAIN?>home/ajax/<?php echo $row['ProductCategory']['id']?>" title=""><?php echo $row['ProductCategory']['name']?> </a></li>
+        <?php }?>
+        
     </ul>
   
-  <div id="tabs-2" class="box-content">
+  <div id="tabs-<?php echo $i?>" class="box-content">
      
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-        $('#tabs-2').load('content/ajax3.htm');
+        $('#tabs-3').load('content/ajax5.ctp');
 
-        $('#tab-2>ul>li a').click(function(){
+        $('#tab-<?php echo $i?>>ul>li a').click(function(){
             var tab = $(this).attr('href');
-            $('#tabs-2').load('content/'+ tab +'.htm');
-            return false;
-        });
-    })
-</script>
-    
-  </div>
-</div>
-
-   <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-sketchup-ngoai-that">Thư viện SKETCHUP ngoại thất</a></div>
-  <div id="tab-3">
-    <ul class="tab-1">
-        <li ><a href="ajax5" title="">nội thất </a></li>
-        <li ><a href="ajax6" title="">ngoại thất </a></li>
-    </ul>
-  
-  <div id="tabs-3" class="box-content">
-     
-    </div>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('#tabs-3').load('content/ajax5.htm');
-
-        $('#tab-3>ul>li a').click(function(){
-            var tab = $(this).attr('href');
-            $('#tabs-3').load('content/'+ tab +'.htm');
+            $('#tabs-<?php echo $i?>').load(tab);
             return false;
         });
     })
@@ -101,38 +52,7 @@ $(document).ready(function() {
     
   </div>
 </div>                                   
-       
-      
-            
+<?php }?>
 
-   <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3ds-max">Thư viện nội thất</a></div>
-  <div id="tab-4">
-    <ul class="tab-1">
-        <li ><a href="ajax7" title="">nội thất </a></li>
-        <li ><a href="ajax8" title="">ngoại thất </a></li>
-    </ul>
-  
-  <div id="tabs-4" class="box-content">
-     
-    </div>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('#tabs-4').load('content/ajax7.htm');
 
-        $('#tab-4>ul>li a').click(function(){
-            var tab = $(this).attr('href');
-            $('#tabs-4').load('content/'+ tab +'.htm');
-            return false;
-        });
-    })
-</script>
-    
-  </div>
-</div>                                   
-                                 
-
-                                     
-       
-      
   </div>

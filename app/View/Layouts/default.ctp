@@ -29,6 +29,7 @@
         ================================================== -->
         <link href="<?php echo DOMAIN?>images/icon/logi.jpg" rel="icon">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/isotope.css">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/slideshow.css" media="screen">
 

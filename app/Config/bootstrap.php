@@ -3,12 +3,15 @@ if (!session_id()) {
     session_start();
 }
 define('WWW_APP', ROOT . DS . APP_DIR . DS);
+define('DOMAINU','http://'.$_SERVER["HTTP_HOST"].'');
 define('DOMAIN','http://'.$_SERVER["HTTP_HOST"].'/');
+define('DOMAINAD','http://'.$_SERVER["HTTP_HOST"].'/admin/');
 define('DOMAINIMG','http://'.$_SERVER["HTTP_HOST"]);
-define('FB_APP_ID','1672140313044385'); //thật
-//define('FB_APP_ID','1672352019689881'); //test
-define('FB_APP_SECRET','cc583d1b84730a17ecaec28ab907a17f'); //thật
-//define('FB_APP_SECRET','e7ce610e700a5196a004a30f2c2e74ee'); //test
+define('IMAGEAD', DOMAINAD . IMAGES_URL);
+//define('FB_APP_ID','1672140313044385'); //thật
+define('FB_APP_ID','1672352019689881'); //test
+//define('FB_APP_SECRET','cc583d1b84730a17ecaec28ab907a17f'); //thật
+define('FB_APP_SECRET','e7ce610e700a5196a004a30f2c2e74ee'); //test
 
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
