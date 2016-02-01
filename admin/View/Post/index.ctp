@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Danh sách danh mục Post
+        Danh sách Post
     </h1>
 
 
@@ -8,7 +8,7 @@
 
     <ol class="breadcrumb">
         <li><a href="<?php echo DOMAINAD ?>" ><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li class="active"> Danh sách danh mục Post</li>
+        <li class="active"> Danh sách Post</li>
     </ol>
 </section>
 
@@ -61,10 +61,11 @@
                         <tbody>
 
                         <thead>
-                        <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
+                        <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                         <th width="4%">STT</th>
                         <th width="10%">Ảnh đại diện</th>
                         <th width="30%" style="text-align:center;"><?php echo $this->Paginator->sort('Post.name', 'Tên Post'); ?></th>
+                        <th width="10%">Đường dẫn</th>
                         <th width="11%"><?php echo $this->Paginator->sort('Post.modified', 'Thay đổi'); ?></th>
                         <th width="12%">Xử lý</th>
                         <th width="3%"><?php echo $this->Paginator->sort('Post.id', 'Mã'); ?></th>
@@ -78,6 +79,8 @@
                                     <img src="<?php echo DOMAINAD?>/timthumb.php?src=<?php echo $value['Post']['images'];?>&amp;h=100&amp;w=100&amp;zc=1" />
                                 </td>
                                 <td><a href="<?php echo DOMAINAD ?>post/edit/<?php echo $value['Post']['id']; ?>" title="Edit"><?php echo $value['Post']['name']; ?></a>  <?php if(date('Y-m-d', strtotime($value['Post']['modified'])) == date('Y-m-d')) { ?><img src="<?php echo DOMAINAD ?>images/icons/iconnew.gif" alt="New" /><?php } ?></td>
+                                <td><a target="blank" href="<?php echo DOMAIN ?>trang/<?php echo $value['Post']['alias']; ?>">Click here</a></td>
+                                
                                 <td>
                                     <?php echo date('d-m-Y', strtotime($value['Post']['modified'])); ?></td>
                                 <td>

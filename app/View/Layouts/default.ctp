@@ -9,7 +9,7 @@
         <meta name="description" content="<?php if(isset($meta_description)): echo htmlentities($meta_description); else: ?>Xôn Xao - Kênh phim ngắn, phim hài đặc sắc, tổng hợp video clip hài hước mới và hot nhất<?php endif; ?>" />
         <meta name="keywords" content="<?php if(isset($keywords)): echo $keywords; else: ?>hai huoc, xôn xao, clip hai xôn xao, phim hai xôn xao, phim ngan xon xao, xonxao<?php endif; ?>" />
         <meta name="news_keywords" content="thư viện nội thất, nội thất" />
-        <meta name="robots" content="index, follow" />
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
         <!--og Option-->
         <meta property="fb:app_id" content="1672140313044385" />   

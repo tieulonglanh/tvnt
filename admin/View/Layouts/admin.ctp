@@ -8,12 +8,40 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- jQuery UI 1.10.3 -->
         <?php echo $this->Html->script('jquery-ui-1.10.3.min'); ?>
-        <?php echo $this->Html->script(array('ddaccordion', 'function','tag-it')); ?>
-        <?php //echo $this->Html->css(array("reset", 'style')); ?>
-        <?php //echo $this->Html->css(array("reset")); ?>
         
-        <?php //echo $this->Html->script('ckeditor/ckeditor'); ?>
         <?php echo $this->Html->script('ckfinder/ckfinder'); ?>
+        <!-- Bootstrap -->
+        <?php echo $this->Html->script('bootstrap.min'); ?>
+        <!-- Morris.js charts -->
+<!--        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="/admin/js/plugins/morris/morris.min.js" type="text/javascript"></script>-->
+        <!-- Sparkline -->
+        <?php echo $this->Html->script('plugins/sparkline/jquery.sparkline.min'); ?>
+        <?php echo $this->Html->script('plugins/chosen/chosen.jquery.min'); ?>
+        <!-- jvectormap -->
+        <script src="/admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+        <script src="/admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        <!-- jQuery Knob Chart -->
+        <?php echo $this->Html->script('plugins/jqueryKnob/jquery.knob'); ?>
+        <!-- daterangepicker -->
+        <?php echo $this->Html->script('plugins/daterangepicker/daterangepicker'); ?>
+        <!-- datepicker -->
+        <?php echo $this->Html->script('plugins/datepicker/bootstrap-datepicker'); ?>
+        <!-- Bootstrap WYSIHTML5 -->
+        <?php echo $this->Html->script('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min'); ?>
+        <!-- iCheck -->
+        <?php echo $this->Html->script('plugins/iCheck/icheck.min'); ?>
+        
+        <?php echo $this->Html->script(array('ddaccordion', 'function','tag-it')); ?>
+        <!-- AdminLTE App -->
+        <?php echo $this->Html->script('AdminLTE/app'); ?>
+
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <?php echo $this->Html->script('AdminLTE/dashboard'); ?>
+
+        <!-- AdminLTE for demo purposes -->
+        <?php echo $this->Html->script('AdminLTE/demo'); ?>
+        
         <?php echo $this->Html->css(array("jquery-ui","tag-it")); ?>
         <!-- bootstrap 3.0.2 -->
         <?php echo $this->Html->css(array("bootstrap.min")); ?>
@@ -338,36 +366,6 @@
 
 
         
-        <!-- Bootstrap -->
-        <?php echo $this->Html->script('bootstrap.min'); ?>
-        <!-- Morris.js charts -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="/admin/js/plugins/morris/morris.min.js" type="text/javascript"></script>
-        <!-- Sparkline -->
-        <?php echo $this->Html->script('plugins/sparkline/jquery.sparkline.min'); ?>
-        <?php echo $this->Html->script('plugins/chosen/chosen.jquery.min'); ?>
-        <!-- jvectormap -->
-        <script src="/admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-        <script src="/admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-        <!-- jQuery Knob Chart -->
-        <?php echo $this->Html->script('plugins/jqueryKnob/jquery.knob'); ?>
-        <!-- daterangepicker -->
-        <?php echo $this->Html->script('plugins/daterangepicker/daterangepicker'); ?>
-        <!-- datepicker -->
-        <?php echo $this->Html->script('plugins/datepicker/bootstrap-datepicker'); ?>
-        <!-- Bootstrap WYSIHTML5 -->
-        <?php echo $this->Html->script('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min'); ?>
-        <!-- iCheck -->
-        <?php echo $this->Html->script('plugins/iCheck/icheck.min'); ?>
-
-        <!-- AdminLTE App -->
-        <?php echo $this->Html->script('AdminLTE/app'); ?>
-
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <?php echo $this->Html->script('AdminLTE/dashboard'); ?>
-
-        <!-- AdminLTE for demo purposes -->
-        <?php echo $this->Html->script('AdminLTE/demo'); ?>
 
     </body>
 </html>

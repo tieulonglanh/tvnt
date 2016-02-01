@@ -61,9 +61,14 @@ function BrowseServerMore(render_id)
 }
 
 $(document).ready(function(){
-    $('#checkall:checkbox').change(function () {
-        if($(this).attr("checked")) $('input:checkbox').attr('checked','checked');
-        else $('input:checkbox').removeAttr('checked');
+    $(document).on('click','#checkallbox',function () {
+        if(!$(this).hasClass("checked")){ 
+            $('input:checkbox').prop('checked', true);
+            $(this).addClass("checked")
+        }else { 
+            $('input:checkbox').prop('checked', false);
+            $(this).removeClass("checked")
+        }
     });
 });
 

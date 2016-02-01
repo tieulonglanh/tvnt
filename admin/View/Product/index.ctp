@@ -52,7 +52,7 @@
                     <table class="table table-hover table-bordered">
                         <tbody>
                         <tr>
-                            <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
+                            <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                             <th width="7%"><?php echo $this->Paginator->sort('Product.id', 'Mã'); ?></th>
                             <th style="width: 5%; text-align:center;">Ảnh</th>
                             <th style="width: 20%; text-align:center;"><?php echo $this->Paginator->sort('Product.name', 'Tên sản phẩm'); ?></th>

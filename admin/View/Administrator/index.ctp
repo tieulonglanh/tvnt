@@ -62,7 +62,7 @@
                         <tbody>
 
                         <thead>
-                        <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
+                        <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                         <th width="4%">STT</th>
                         <th width="20%"><?php echo $this->Paginator->sort('Administrator.name', 'Tài khoản'); ?></th>
                         <!--th width="20%"><?php //echo $this->Paginator->sort('Administrator.fullname', 'Quyền'); ?></th-->

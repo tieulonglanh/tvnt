@@ -52,7 +52,7 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
+                                    <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                                     <th width="4%">STT</th>
                                     <th width="15%">Ảnh đại diện</th>
                                     <th width="30%" style="text-align:center;"><?php echo $this->Paginator->sort('News.name', 'Tiêu đề tin'); ?></th>

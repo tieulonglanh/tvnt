@@ -46,7 +46,7 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
-                            <th width="2%"><input type="checkbox" name="all" id="checkall" /></th>
+                            <th width="2%"><a href='javascript:void(0)' id="checkallbox" >Check All</a></th>
                             <th width="4%">STT</th>
                             <th width="20%">Icon Menu</th>
                             <th width="20%" style="text-align:center;"><?php echo $this->Paginator->sort('Menu.name', 'Tên danh mục'); ?></th>
