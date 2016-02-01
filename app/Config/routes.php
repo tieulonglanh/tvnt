@@ -25,31 +25,30 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'Home', 'action' => 'index', 'home'));
+        Router::connect('/', array('controller' => 'Home', 'action' => 'index'));
+        
+        /************ SẢN PHẨM **************************/
+        Router::connect('/danh-muc/*', array('controller' => 'Product', 'action' => 'list_product'));
+        Router::connect('/san-pham/*', array('controller' => 'Product', 'action' => 'detail'));
+        Router::connect('/tim-kiem.html', array('controller' => 'Product', 'action' => 'search'));
+        
+        /************ TIN TUC **************************/
         Router::connect('/tin-tuc/*', array('controller' => 'News', 'action' => 'index'));
-        Router::connect('/chi-tiet-tin-tuc/*', array('controller' => 'News', 'action' => 'detail'));
-        Router::connect('/danh-muc/*', array('controller' => 'Video', 'action' => 'category'));
-        Router::connect('/chi-tiet/*', array('controller' => 'Video', 'action' => 'detail'));
-        Router::connect('/clip-moi.html', array('controller' => 'Video', 'action' => 'latest'));
-        Router::connect('/clip-hot.html', array('controller' => 'Video', 'action' => 'topHot'));
-        Router::connect('/clip-binh-chon.html', array('controller' => 'Video', 'action' => 'topVote'));
-        Router::connect('/dang-ky.html', array('controller' => 'User', 'action' => 'register'));
-        Router::connect('/dang-nhap.html', array('controller' => 'User', 'action' => 'login'));
-        Router::connect('/dang-video.html', array('controller' => 'User', 'action' => 'upload_video'));
-        Router::connect('/login-facebook.html', array('controller' => 'User', 'action' => 'login_facebook'));
-        Router::connect('/ho-so-ca-nhan.html', array('controller' => 'User', 'action' => 'user_info'));
-        Router::connect('/video-cua-toi.html', array('controller' => 'User', 'action' => 'my_video'));
-        Router::connect('/sua-video/*', array('controller' => 'User', 'action' => 'edit_video'));
-        Router::connect('/tim-kiem.html', array('controller' => 'Video', 'action' => 'search'));
-
+        Router::connect('/danh-muc-tin/*', array('controller' => 'News', 'action' => 'category'));
+        Router::connect('/chi-tiet-tin/*', array('controller' => 'News', 'action' => 'detail'));
+        
+        /************ POST **************************/
+        Router::connect('/trang/*', array('controller' => 'Post', 'action' => 'detail'));
+        Router::connect('/lien-he.html/*', array('controller' => 'Home', 'action' => 'contact'));
+        Router::connect('/sitemap.html/*', array('controller' => 'Home', 'action' => 'sitemap'));
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.
  */
-	CakePlugin::routes();
+        CakePlugin::routes();
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
-	require CAKE . 'Config' . DS . 'routes.php';
+        require CAKE . 'Config' . DS . 'routes.php';

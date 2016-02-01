@@ -72,7 +72,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'letshop',
+		'database' => 'xonxao',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

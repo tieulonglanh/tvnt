@@ -99,11 +99,11 @@
 
         </div>
     </div>
-    <div class="box-left">
-        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit;">
+    <div style="margin-bottom: 15px;">
+        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit !important;">
     </div>
-    <div class="box-left">
-        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit;">
+    <div style="margin-bottom: 15px;">
+        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit !important;">
     </div>
 
    <div class="box-left">

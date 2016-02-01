@@ -77,7 +77,7 @@
     </div>
 
     <div style="border-top: 1px #4c5458 solid;width: 100%;line-height: 52px;">
-        <div style="padding-left: 40px;color:#fff;font-size: 14px;">
+        <div style="padding-left: 40px;color:#fff;">
             © 2016 New Future Graphics & design by <a href="http://baobinh.net/" style="color:#fff">baobinh.net</a>
         </div>
         

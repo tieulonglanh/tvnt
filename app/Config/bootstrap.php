@@ -4,8 +4,8 @@ if (!session_id()) {
 }
 define('WWW_APP', ROOT . DS . APP_DIR . DS);
 define('DOMAINU','http://'.$_SERVER["HTTP_HOST"].'');
-define('DOMAIN','http://'.$_SERVER["HTTP_HOST"].'/tvnt/');
-define('DOMAINAD','http://'.$_SERVER["HTTP_HOST"].'/tvnt/admin/');
+define('DOMAIN','http://'.$_SERVER["HTTP_HOST"].'/');
+define('DOMAINAD','http://'.$_SERVER["HTTP_HOST"].'/admin/');
 define('DOMAINIMG','http://'.$_SERVER["HTTP_HOST"]);
 define('IMAGEAD', DOMAINAD . IMAGES_URL);
 //define('FB_APP_ID','1672140313044385'); //thật
