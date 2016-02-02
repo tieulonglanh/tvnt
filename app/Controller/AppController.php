@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Subscribe','Menu','NewsCategory');
+	public $uses = array('Subscribe','Menu','NewsCategory','Bloghtml');
 	 public function beforeFilter() {
 	 if($this->request->is('post')){
             $data=$this->request->data;
@@ -110,6 +110,39 @@ class AppController extends Controller {
 
         	)));
         $this->set('cat_news',$cat_news);
+        ///////
+        $footericon = $this->Bloghtml->find('first', array(
+            'conditions' => array(
+                'name' => 'footer-icon'
+            ),
+            'order' => 'created DESC'
+        ));
+        $this->set('footericon', $footericon);
+
+        ///
+         $footerleft = $this->Bloghtml->find('first', array(
+            'conditions' => array(
+                'name' => 'footer-left'
+            ),
+            'order' => 'created DESC'
+        ));
+        $this->set('footerleft', $footerleft);
+
+         $banner = $this->Bloghtml->find('first', array(
+            'conditions' => array(
+                'name' => 'banner'
+            ),
+            'order' => 'created DESC'
+        ));
+        $this->set('banner', $banner);
+        /////////////////////////
+         $icontop = $this->Bloghtml->find('first', array(
+            'conditions' => array(
+                'name' => 'icontop'
+            ),
+            'order' => 'created DESC'
+        ));
+        $this->set('icontop', $icontop);
  	}
 }
 
