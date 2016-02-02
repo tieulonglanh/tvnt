@@ -1054,7 +1054,8 @@ ul.tab-1 li a{color: #ed8c01;text-transform: uppercase;font-weight: bold;}
 	text-decoration: none;
 	margin-bottom: 4px;
 	color: #333333;
-	font-weight:bold
+	font-weight:bold;
+	text-transform: uppercase;
 }
 
 .box-left .box-product-left .name a:hover {
