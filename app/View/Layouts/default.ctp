@@ -31,6 +31,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/stylesheet.css">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/isotope.css">
+          <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/animate.css">
         <link rel="stylesheet" type="text/css" href="<?php echo DOMAIN?>css/slideshow.css" media="screen">
 
         <script>(function() {
@@ -50,10 +51,13 @@
         </script>
         <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo DOMAIN?>js/wow.min.js"></script>
         <script type="text/javascript" src="<?php echo DOMAIN?>js/jquery.nivo.slider.pack.js"></script>
         <script type="text/javascript" src="<?php echo DOMAIN?>js/MENU.js"></script>
         <script type="text/javascript" src="<?php echo DOMAIN?>js/isotope.js"></script>
-           
+           <script>
+ new WOW().init();
+</script>
            <script type="text/javascript">
             $(document).ready(function () {
 

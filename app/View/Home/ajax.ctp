@@ -54,7 +54,7 @@
 	  			<!-- <li><a href="#" title="" data-option-value="*">Tổng hợp </a></li> -->
 	  			<?php foreach ($tag as $key => $value) {
 	  			?>
-	  			<li><a href="<?php echo DOMAIN?>home/tag/<?php echo $value['Tag']['id']?>" title="" data-option-value=".<?php echo $value['Tag']['tag_name']?>"><?php echo $value['Tag']['tag_name']?></a></li>
+	  			<li><a href="javascript:void(0)" tagname="<?php echo $value['Tag']['tag_name']?>" cateid="<?php echo $cat_pro['ProductCategory']['id']?>" url="<?php echo DOMAIN?>home/tag/" title=""><?php echo $value['Tag']['tag_name']?></a></li>
 	  			<?php }?>
 	  			
 
@@ -66,11 +66,13 @@
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-        $('#con4').load('content/ajax5.ctp');
 
         $('#option4>ul>li a').click(function(){
-            var tab = $(this).attr('href');
-            $('#con4').load(tab);
+                // alert('ádasdasd');
+            var tab = $(this).attr('url');
+            var cate_id = $(this).attr('cateid');
+            var tag_name = $(this).attr('tagname');
+            $('#con4').load(tab, {cateid:cate_id, tagname:tag_name});
             return false;
         });
     })

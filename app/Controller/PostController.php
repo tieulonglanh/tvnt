@@ -6,9 +6,10 @@ class PostController extends AppController
 {	
 	public $name = 'Post';
 	public $uses= array('Post');
-	 public function index($id=null)
+	 public function detail($alias=null)
 	{
-		 $post = $this->Post->read(null, $id);
+		 $post = $this->Post->findByAlias($alias);
 		 $this->set('post',$post);
+		 // pr($post);die;
 	}
 }

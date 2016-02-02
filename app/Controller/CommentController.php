@@ -6,39 +6,22 @@
 	{
 		public $name = 'Comment';
 
-       	public $uses = array('Content', 'ContentCategory', 'Group','GroupCategory','Menuleft','News','NewsCategory','Right','RightCategory','Setting','Slideshow');
-		public function left()
-		{
-			 return $this->Menuleft->find('all', array('conditions' => array('Menuleft.status' => 1)));
-		}
-		public function rightcat()
-		{
-			 return $this->RightCategory->find('all', array('conditions' => array('RightCategory.status' => 1)));
-		}
-		public function right()
-		{
-			 return $this->Right->find('all', array('conditions' => array('Right.status' => 1,'Right.right_category_id' => $id)));
-		}
-		public function slideshow() {
-        $slideshow = $this->Slideshow->find('all', array('conditions' => array('Slideshow.status' => 1,'Slideshow.display' => 1),'order' => 'Slideshow.modified DESC'));
-        return $slideshow;
+       	public $uses = array('Menu','Slideshow','New','Advertisement');
+		public function menungang(){
 
-    	}
-    	public function slidebot() {
-        $slideshow = $this->Slideshow->find('all', array('conditions' => array('Slideshow.status' => 1,'Slideshow.display' => 2),'order' => 'Slideshow.modified DESC'));
-        return $slideshow;
+			return($this->Menu->find('all',array('conditions'=>array('Menu.type'=>1),'order'=>'Menu.id ASC')));
+		}
+		public function slideshow(){
 
-    	}
-		function product_right($catId = null) {$cat1 = array();
-        $cat1[0]=$catId;$i=1;
-        $cat = $this-> RightCategory ->find('all', array('conditions' => array('RightCategory.status' => 1)));
-        	//var_dump($cat);die;
-        foreach ($cat as $row){
-            $cat1[]=$row['RightCategory']['id'];
-        }
-        //var_dump($cat1);die;
-        $product_right= $this->Right->find('all', array('conditions' => array('Right.status' => 1, 'Right.right_category_id' => $cat1)));
-        pr($product_right);die;
-    	}
+			return($this->Slideshow->find('all',array('conditions'=>array('Slideshow.status'=>1),'order'=>'Slideshow.sort_order ASC')));
+		}
+		public function newleft(){
+
+			return($this->New->find('all',array('conditions'=>array('New.status'=>1),'order'=>'New.modified DESC')));
+		}
+		public function ads(){
+
+			return($this->Advertisement->find('all',array('conditions'=>array('Advertisement.status'=>1),'order'=>'Advertisement.position ASC','limit'=>'2')));
+		}
 	}
  ?>

@@ -2,153 +2,42 @@
 <div id="column-right">
    
   <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3dsmax-2015">Update thư viện mới 2015</a></div>
+  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3dsmax-2015">Sitemap</a></div>
  	
-  <div class="box-content" style="padding: 0 52px 35px;">
+  <div class="box-content" style="padding-bottom:35px;">
   	<div class="map">
-  		<div class="map2">
-  			<div class="map1">
-			<p>THƯ VIỆN 3DS MAX</p>
-
+  		<ul class="map2">
+  		<?php
+  			$i=0;
+  		 foreach ($sitemap_cat as $key => $value) {
+  			$i++;
+  		?>
+  			<li class="map1">
+			<p><?php echo $value['Sitemap']['name']?></p>
+				<?php foreach ($mang[$value['Sitemap']['id']] as $key => $row) {
+					
+				?>
 				<div>
-					<span><a href="" title="">Nội thất</a></span><br>
-						<a href="" title="">3dsky</a><br>
-						<a href="" title="">Oumoo</a><br>
-						<a href="" title="">Tân cổ điển</a><br>
-						<a href="" title="">Nội thất châu âu</a><br>
-						<a href="" title="">Phong cách địa trung hải</a><br>
-				</div>
-				<div>
-						<span><a href="" title="">Ngoại thất</a></span><br>
-						<a href="" title="">crystal cg</a><br>
-						<a href="" title="">cảnh quan</a><br>
-						<a href="" title="">quy hoạch</a><br>
-						
-					</div>
-				<a href="" title="">3d models</a><br>
-				<a href="" title="">evermotion</a><br>
-				<a href="" title="">designconnected</a><br>
-				<a href="" title="">maps, hdri, materials</a>
-
-
-      </div>
-      <div class="map1">
-			<p>THƯ VIỆN 3DS MAX</p>
-
-				<div>
-					<span><a href="" title="">Nội thất</a></span><br>
-						<a href="" title="">3dsky</a><br>
-						<a href="" title="">Oumoo</a><br>
-						<a href="" title="">Tân cổ điển</a><br>
-						<a href="" title="">Nội thất châu âu</a><br>
-						<a href="" title="">Phong cách địa trung hải</a><br>
-				</div>
-				<div>
-						<span><a href="" title="">Ngoại thất</a></span><br>
-						<a href="" title="">crystal cg</a><br>
-						<a href="" title="">cảnh quan</a><br>
-						<a href="" title="">quy hoạch</a><br>
-						
-					</div>
-				<a href="" title="">3d models</a><br>
-				
-
-      </div>
-      <div class="map1">
-			<p>THƯ VIỆN 3DS MAX</p>
-
-				<div>
-					<span><a href="" title="">Nội thất</a></span><br>
-						<a href="" title="">3dsky</a><br>
-						<a href="" title="">Oumoo</a><br>
-						<a href="" title="">Tân cổ điển</a><br>
-						<a href="" title="">Nội thất châu âu</a><br>
-						<a href="" title="">Phong cách địa trung hải</a><br>
-				</div>
-				<div>
-						<span><a href="" title="">Ngoại thất</a></span><br>
-						<a href="" title="">crystal cg</a><br>
-						<a href="" title="">cảnh quan</a><br>
-						<a href="" title="">quy hoạch</a><br>
-						
-					</div>
-				<a href="" title="">3d models</a><br>
-				<a href="" title="">evermotion</a><br>
-				
-
-			      </div>
-			      <div class="map1">
-						<p>THƯ VIỆN 3DS MAX</p>
-
-							<div>
-								<span><a href="" title="">Nội thất</a></span><br>
-									<a href="" title="">3dsky</a><br>
-									<a href="" title="">Oumoo</a><br>
-									<a href="" title="">Tân cổ điển</a><br>
-									<a href="" title="">Nội thất châu âu</a><br>
-									<a href="" title="">Phong cách địa trung hải</a><br>
-							</div>
+					<span><a href="<?php echo $row['Sitemap']['link']?>" title=""><?php echo $row['Sitemap']['name']?></a></span><br>
+						<?php foreach ($mang1[$row['Sitemap']['id']] as $key => $row1) {
 							
-
-			      </div>
-  		</div>
-  	 	<div class="map2">
-  	 		<div class="map1">
-						<p>THƯ VIỆN 3DS MAX</p>
-
-					<div>
-						<span><a href="" title="">Nội thất</a></span><br>
-							<a href="" title="">3dsky</a><br>
-							<a href="" title="">Oumoo</a><br>
-							<a href="" title="">Tân cổ điển</a><br>
-							<a href="" title="">Nội thất châu âu</a><br>
-							<a href="" title="">Phong cách địa trung hải</a><br>
-					</div>
-					<div>
-						<span><a href="" title="">Ngoại thất</a></span><br>
-						<a href="" title="">crystal cg</a><br>
-						<a href="" title="">cảnh quan</a><br>
-						<a href="" title="">quy hoạch</a><br>
+						?>
+						<a href="<?php echo $row1['Sitemap']['link']?>" title=""><?php echo $row1['Sitemap']['name']?></a><br>
+						<?php }?>
 						
-					</div>
-					<div>
-						<span><a href="" title="">3d models</a></span><br>
-						<a href="" title="">evermotion</a><br>
-						<a href="" title="">designconnected</a><br>
-						</div>
-					<a href="" title="">maps, hdri, materials</a>
+				</div>
+				<?php }?>
+				
 
 
-     			</div>
-        	 	<div class="map1">
-						<p>THƯ VIỆN 3DS MAX</p>
-
-					<div>
-						<span><a href="" title="">Nội thất</a></span><br>
-							<a href="" title="">3dsky</a><br>
-							<a href="" title="">Oumoo</a><br>
-							<a href="" title="">Tân cổ điển</a><br>
-							<a href="" title="">Nội thất châu âu</a><br>
-							<a href="" title="">Phong cách địa trung hải</a><br>
-					</div>
-					<div>
-						<span><a href="" title="">Ngoại thất</a></span><br>
-						<a href="" title="">crystal cg</a><br>
-						<a href="" title="">cảnh quan</a><br>
-						<a href="" title="">quy hoạch</a><br>
-						
-					</div>
-					<div>
-						<span><a href="" title="">3d models</a></span><br>
-						<a href="" title="">evermotion</a><br>
-						<a href="" title="">designconnected</a><br>
-						</div>
-					<a href="" title="">maps, hdri, materials</a>
-
-
-     			</div>
+      		</li>
+      		<?php }?>
+      
+  		</ul>
+  	 	<!-- <div class="map2">
+  	 		
   	 	</div>
-        	 	
+        	 	 -->
   	</div>
   	</div>
 </div>

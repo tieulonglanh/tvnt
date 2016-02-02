@@ -171,6 +171,7 @@ if (in_array($setActive, array('link'))) {
                                 <li <?php if($setActive == 'sitemap'){echo 'class="active"'; }?> ><a href="<?php echo DOMAINAD ?>sitemap" ><i class="fa fa-angle-double-right"></i> Sitemap</a></li>
                                 <li <?php if($setActive == 'slideshow'){echo 'class="active"'; }?> ><a href="<?php echo DOMAINAD ?>slideshow" ><i class="fa fa-angle-double-right"></i> Slide show</a></li>
                                 <li <?php if($setActive == 'post'){echo 'class="active"'; }?> ><a href="<?php echo DOMAINAD ?>post" ><i class="fa fa-angle-double-right"></i> Bài post</a></li>
+                                 <li <?php if($setActive == 'bloghtml'){echo 'class="active"'; }?> ><a href="<?php echo DOMAINAD ?>bloghtml" ><i class="fa fa-angle-double-right"></i> Bloghtml</a></li>
                             </ul>
                         </li>
 

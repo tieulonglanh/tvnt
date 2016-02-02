@@ -54,12 +54,12 @@
     	text-align: right;;
     }
     .map1{
-        line-height: 18px;
-       /* overflow: hidden;
-        height: 286px;*/
-        width: 25%;
-        float: left;
-        margin-top: 35px;
+       line-height: 18px;
+    /* width: 25%; */
+    /* float: left; */
+    margin-top: 35px;
+    display: inline-table;
+    padding: 0 35px;
     }
     /*.map{
 
@@ -81,6 +81,8 @@
         text-transform: uppercase;
     }
     .map2{
-            width: 100%;
+               padding: 0;
+    /* width: 100%; */
     display: inline-block;
+    list-style: none;
     }

@@ -1,18 +1,6 @@
 <?php echo $this->element('left')?>
 <div id="column-right">
-    <div class="slideshow">
-  <div id="slideshow0" class="nivoSlider" style="">
-                <img  src="<?php echo DOMAIN?>images/slide.png" alt="5000" style="display: none;">
-                <img  src="<?php echo DOMAIN?>images/slide.png" alt="3000" style="display: none;">
-                <img  src="<?php echo DOMAIN?>images/slide.png" alt="4000" style="display: none;">
-                <img  src="<?php echo DOMAIN?>images/slide.png" alt="2000" style="display: none;">
-                <img  src="<?php echo DOMAIN?>images/slide.png" alt="1000" style="display: none;">
-          <div class="nivo-caption" style="opacity: 0;"><p></p></div>
-          <div class="nivo-directionNav" style="display: none;"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
-          <div class="nivo-controlNav"><a class="nivo-control" rel="0">1</a><a class="nivo-control" rel="1">2</a><a class="nivo-control" rel="2">3</a><a class="nivo-control" rel="3">4</a><a class="nivo-control active" rel="4">5</a></div>
-
-          </div>
-</div>
+    <?php echo $this->element('slideshow')?>
 <script type="text/javascript"><!--
 $(document).ready(function() {
     $('#slideshow0').nivoSlider();
@@ -28,15 +16,70 @@ $(document).ready(function() {
   <div class="box-heading"><a target="_blank" href=""><?php echo $value['ProductCategory']['name']?></a></div>
   <div id="tab-<?php echo $i?>">
     <ul class="tab-1">
-    <?php foreach ($mang[$value['ProductCategory']['id']] as $key => $row) {
+    <?php
+      if(!empty($mang[$value['ProductCategory']['id']])){
+     foreach ($mang[$value['ProductCategory']['id']] as $key => $row) {
     ?>
         <li ><a href="<?php echo DOMAIN?>home/ajax/<?php echo $row['ProductCategory']['id']?>" title=""><?php echo $row['ProductCategory']['name']?> </a></li>
-        <?php }?>
+        <?php }}?>
         
     </ul>
   
-  <div id="tabs-<?php echo $i?>" class="box-content">
-     
+  <div id="tabs-<?php echo $i?>" class="box-content" style="position: relative;">
+     <div id="option<?php echo $i?>" class="tag clearfix">
+        <ul id="filters" class="option-set clearfix" data-option-key="filter">
+          <!-- <li><a href="#" title="" data-option-value="*">Tổng hợp </a></li> -->
+          <?php
+          if(!empty($tag1)){
+           foreach ($tag1 as $key => $value1) {
+          
+          ?>
+          <li><a href="javascript:void(0)" tagname="<?php echo $value1['Tag']['tag_name']?>" cateid="<?php echo $value['ProductCategory']['id']?>" url="<?php echo DOMAIN?>home/tag/" title=""><?php echo $value1['Tag']['tag_name']?></a></li>
+          <?php }}?>
+          
+
+        </ul>
+      </div>
+    <div id="con<?php echo $i?>" class="box-product-left clearfix">
+        <?php 
+          if(!empty($data)){ foreach ($data[$value['ProductCategory']['id']] as $key => $row1) {
+        ?>
+          <div class="element">
+      
+                <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $row1['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
+                
+    <div class="name"><a href=""><?php echo $row1['Product']['name']?></a></div>
+   <div class="buttons" style="border:none">
+  <a class="detail" href="http://newfuturegraphics.org/models-classic-furniture-02.html">Xem sản phẩm</a>
+  <a class="contact" href="http://newfuturegraphics.org/index.php?route=information/contact">Liên hệ</a></div>
+      </div>
+      <?php }}?>
+      <p class="continue">
+    
+                <?php
+        echo $this->Paginator->first(' Đầu ', null, null, array('class' => 'disabled'));     
+        echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled')); 
+        echo $this->Paginator->numbers(array('separator' =>" "));
+        echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled')); 
+        echo $this->Paginator->last(' Cuối ', null, null, array('class' => 'disabled')); 
+    ?>  
+
+              
+</p>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#option<?php echo $i?>>ul>li a').click(function(){
+                // alert('ádasdasd');
+            var tab = $(this).attr('url');
+            var cate_id = $(this).attr('cateid');
+            var tag_name = $(this).attr('tagname');
+            $('#con<?php echo $i?>').load(tab, {cateid:cate_id, tagname:tag_name});
+            return false;
+        });
+    })
+</script>
     </div>
     <script type="text/javascript">
     $(document).ready(function(){

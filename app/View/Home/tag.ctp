@@ -1,8 +1,8 @@
 <?php foreach ($listProduct as $key => $value) {
 ?>
-<div class="element Soup">
+<div class="element wow bounceInRight">
       
-                <div class="image"><a href=""><img src="<?php echo DOMAIN?><?php echo $value['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
+                <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $value['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
                 
 		<div class="name"><a href=""><?php echo $value['Product']['name']?></a></div>
 	 <div class="buttons" style="border:none">
