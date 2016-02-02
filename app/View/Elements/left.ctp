@@ -7,51 +7,28 @@
         <div class="box-content">
             <div class="box-category dropdown-content" id="myDropdown">
                 <ul>
+                <?php foreach ($menuleft as $key => $value) {
+                    # code...
+                ?>
                     <li class='has-sub'>
                         <p>
-                            <a href="#"><img width="45" height="45" src="<?php echo DOMAIN?>images/iconleft.png" alt="">thư viện 3ds max <span style="    position: absolute;color: #9b9a9a;right: 0;">(10)</span></a>
+                            <a href="#"><img width="45" height="45" src="<?php echo DOMAIN?><?php echo $value['Menu']['icon']?>" alt=""><?php echo $value['Menu']['name']?><span style="    position: absolute;color: #9b9a9a;right: 0;">(10)</span></a>
                         </p>
                         <ul>
+                            <?php foreach ($mag1[$value['Menu']['id']] as $key => $row) {
+                               
+                            ?>
                             <li>
                                 <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">ảnh nội thất</a>
+                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?><?php echo $row['Menu']['icon']?>" alt=""><?php echo $row['Menu']['name']?></a>
                                 </p>
                             </li>
-                            <li>
-                                <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">Thư viện nội thất</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">Thư viện ngoại thất</a>
-                                </p>
-                            </li>
+                            <?php }?>
                         </ul>
                     </li>
-                     <li class='has-sub'>
-                        <p>
-                             <a href=""><img width="45" height="45" src="<?php echo DOMAIN?>images/iconleft.png" alt="">thư viện sketchup<span style="    position: absolute;color: #9b9a9a;right: 0;">(10)</span></a>
-                        </p>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">ảnh nội thất</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">Thư viện nội thất</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href=""><img width="35" height="35" src="<?php echo DOMAIN?>images/iconleft1.png" alt="">Thư viện ngoại thất</a>
-                                </p>
-                            </li>
-                        </ul>
-                     </li>
-                    <li>
+                    <?php }?>
+                     
+                   
                 </ul>
             </div>
         </div>
@@ -63,48 +40,32 @@
     <div class="box-left">
       <div class="box-heading">Blog-chia sẻ</div>
         <div class="box-content" style="text-align: justify;">
+         <?php 
+                                    $newleft=$this->requestAction('Comment/newleft'); 
+                                      foreach ($newleft as $key => $value) {
+
+                                ?>
             <div style="padding-top: 20px;">
                 <a href="" title="" style="    color: #464544;line-height: 20px;">
-                Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
+                <?php echo $value['New']['name']?>
                 </a>
                 <div style="    margin-top: 5px;">
-                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
+                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;">  <?php echo $value['New']['modified']?>
                 </div>
             </div>
-            <div style="padding-top: 20px;">
-                <a href="" title="" style="    color: #464544;line-height: 20px;">
-                Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
-                </a>
-                <div style="    margin-top: 5px;">
-                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
-                </div>
-            </div>
-            <div style="padding-top: 20px;">
-                <a href="" title="" style="    color: #464544;line-height: 20px;">
-                Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
-                </a>
-                <div style="    margin-top: 5px;">
-                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
-                </div>
-            </div>
-            <div style="padding-top: 20px;">
-                <a href="" title="" style="    color: #464544;line-height: 20px;">
-                Với hình thức lẩu băng chuyền thuyền này, bạn vừa được thỏa mãn vị giác khi tha hồ
-                </a>
-                <div style="    margin-top: 5px;">
-                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;"> <span>2015-10-10</span>&nbsp;<span>10:10:34</span> 
-                </div>
-            </div>
-            
+            <?php }?>
 
         </div>
     </div>
+    <?php 
+                $ads=$this->requestAction('Comment/ads'); 
+                  foreach ($ads as $key => $row) {
+
+                                ?>
     <div style="margin-bottom: 15px;">
-        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit !important;">
+        <a href="<?php echo $row['Advertisement']['link']?>" title=""><img width="245" height="245" src="<?php echo DOMAIN?><?php echo $row['Advertisement']['images']?>" alt=""></a>
     </div>
-    <div style="margin-bottom: 15px;">
-        <img width="245" height="245" src="<?php echo DOMAIN?>images/ADS.png" alt="" style="    display: inherit !important;">
-    </div>
+    <?php }?>
 
    <div class="box-left">
   <div class="box-heading">Sản phẩm bán chạy</div>
