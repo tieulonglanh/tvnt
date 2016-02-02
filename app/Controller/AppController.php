@@ -31,4 +31,85 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public $uses = array('Subscribe','Menu','NewsCategory');
+	 public function beforeFilter() {
+	 if($this->request->is('post')){
+            $data=$this->request->data;
+            if( $this->Subscribe->save($data) ){
+                 echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
+            }
+       
+ 		}        
+
+ 		$menufooter= $this->Menu->find('all',array('conditions'=>array(
+ 				'Menu.type'=>2,
+ 				'Menu.parent_id'=>0,
+ 			)));
+ 		$this->set('menufooter',$menufooter);
+ 		 $list_cate_id1 = array();
+        foreach ($menufooter as $menufooter_cat) {
+            $list_cate_id1[] = $menufooter_cat['Menu']['id'];
+        }
+
+        // pr($list_cate_id1); die;
+        $menufooter1 = $this->Menu->find('all', array(
+            'conditions' => array(
+                'Menu.type'=>2,
+                'Menu.parent_id' => $list_cate_id1
+            )
+        ));
+         // pr($menufooter1); die;
+        $mag = array();
+        foreach ($list_cate_id1 as $key => $value) {
+            foreach ($menufooter1 as $product) {
+                if ($product['Menu']['parent_id'] == $value) {
+                    $mag[$value][] = $product;
+                }
+            }
+        }
+
+        // pr($mang); die;
+        $this->set('mag', $mag);
+
+
+
+        $menuleft= $this->Menu->find('all',array('conditions'=>array(
+ 				'Menu.type'=>0,
+ 				'Menu.parent_id'=>0,
+ 			)));
+ 		$this->set('menuleft',$menuleft);
+ 		 $list_cate_id = array();
+        foreach ($menuleft as $menuleft_cat) {
+            $list_cate_id[] = $menuleft_cat['Menu']['id'];
+        }
+
+        // pr($list_cate_id); die;
+        $menuleft1 = $this->Menu->find('all', array(
+            'conditions' => array(
+                'Menu.type'=>0,
+                'Menu.parent_id' => $list_cate_id
+            )
+        ));
+         // pr($menuleft1); die;
+        $mag1 = array();
+        foreach ($list_cate_id as $key => $value) {
+            foreach ($menuleft1 as $product) {
+                if ($product['Menu']['parent_id'] == $value) {
+                    $mag1[$value][] = $product;
+                }
+            }
+        }
+
+        // pr($mang); die;
+        $this->set('mag1', $mag1);
+
+        $cat_news=$this->NewsCategory->find('all',array('conditions'=>array(
+        		'NewsCategory.status'=>1,
+        		'NewsCategory.parent_id'=>0,
+
+        	)));
+        $this->set('cat_news',$cat_news);
+ 	}
 }
+

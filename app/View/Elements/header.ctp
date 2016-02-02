@@ -5,18 +5,29 @@
  
 </div>
 
+<script>
+$(function(){
+    // this will get the full URL at the address bar
+    var url = window.location.href; 
 
+    // passes on every "a" tag 
+    $("#menu>ul>li a").each(function() {
+            // checks if its the same on the address bar
+        if(url == (this.href)) { 
+            $(this).closest("li").addClass("active");
+        }
+    });
+});
+</script>
 <div id="wapper">
 <div id="menu">
   <ul>
-     <li class="active"><a href="<?php echo DOMAIN?>">TRANG CHỦ</a></li>
-     <li><a href="" title="">ABOUT US</a></li>
-     <li><a href="menutab.html">KHUYẾN MÃI</a></li>
-     <li><a href="">HƯỚNG DẪN MUA HÀNG & THANH TOÁN</a></li>
-     <li><a href="product.html">KHÁCH HÀNG</a></li>
-     <li><a href="blog.html">BLOG - CHIA SẺ</a></li>
-     <li><a href="sitemap.html">SITE MAP</a></li>
-     <li><a href="contact.html">LIÊN HỆ</a></li>
+                 <?php 
+                 $menu=$this->requestAction('Comment/menungang'); 
+                 foreach ($menu as $key => $value) {
+                                ?>
+     <li><a href="<?php echo $value['Menu']['link']?>"><?php echo $value['Menu']['name']?></a></li>
+     <?php }?>
     
   </ul>
   

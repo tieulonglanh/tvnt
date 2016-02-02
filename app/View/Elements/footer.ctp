@@ -2,7 +2,7 @@
         <span style="line-height: 102px;">
             <span style="color:#fff;font-weight: bold;">THUVIENKIENTRUC.COM.VN</span>
             <form action="" method="post" accept-charset="utf-8">
-            <input style=" margin-left: 25px;margin-right: 10px;   width: 418px;height: 28px;font-weight: bold;" type="text" name="" value="" placeholder="Enter your email address">
+            <input style=" margin-left: 25px;margin-right: 10px;   width: 418px;height: 28px;font-weight: bold;" type="text" name="email" value="" placeholder="Enter your email address">
             <button  type="submit" class="subscribe">SUBSCRIBE</button>
         </form>
         </span>
@@ -24,33 +24,27 @@
 
             </div>
             <div class="footer2">
-                
+                <?php
+           
+            
+            foreach ($menufooter as $value) {
+
+                ?>
                     <div style="width:50%;float:left;">
-                    <div style="padding-left: 50px; width: 100%;line-height: 30px;">
-                        <div style="font-weight: bold;font-size: 14px;color:#fff;">SPECIAL</div>
+                    <div style="padding-left: 50px;line-height: 30px;">
+                        <div style="font-weight: bold;font-size: 14px;color:#fff;"><?php echo $value['Menu']['name']?></div>
                     <ul>
-                        <li><a href="" title="">> Thư viện 3ds max</a></li>
-                        <li><a href="" title="">> Thư viện SketchUp</a></li>
-                        <li><a href="" title="">> Thư viện Photoshop</a></li>
-                        <li><a href="" title="">> FREE & SALE 50%</a></li>
+                        <?php
+                        foreach ($mag[$value['Menu']['id']] as $key => $row) {
+                        ?>
+                        <li><a href="" title="">> <?php echo $row['Menu']['name']?></a></li>
+                        <?php }?>
                     </ul>
                     </div>
                         
                     </div>
-                    <div style="width:50%;float:left;">
-                    <div style=" padding-left: 20px;line-height: 30px;">
-                        <div style="font-weight: bold;font-size: 14px;color:#fff;">SITE INFORMATION</div>
-                    <ul>
-                        <li><a href="" title="">> About us</a></li>
-                        <li><a href="" title="">> Khuyến mãi</a></li>
-                        <li><a href="" title="">> Blog - Chia sẻ</a></li>
-                        <li><a href="" title="">> Site Map</a></li>
-                    </ul>
-                    </div>
-                    </div>
-                    
-                
-                
+                    <?php }?>
+
             </div>
             <div class="footer3">
                 <div style=" padding-left: 30px;">
