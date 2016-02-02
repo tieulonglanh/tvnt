@@ -25,6 +25,7 @@ function BrowseServer()
 {
     var finder = new CKFinder();
     finder.basePath = 'ckfinder/';	// The path for the installation of CKFinder (default = "/ckfinder/").
+    finder.resourceType = 'Images';
     finder.selectActionFunction = SetFileField;
 	finder.popup();
 }
@@ -40,6 +41,7 @@ function BrowseServerFF()
 {
     var finder = new CKFinder();
     finder.basePath = 'ckfinder/';	// The path for the installation of CKFinder (default = "/ckfinder/").
+    finder.resourceType = 'Images';
     finder.selectActionFunction = function (file) {
         document.getElementById( 'xFileFirstImage' ).value = file;
         var img = '<img src="/admin/timthumb.php?src='+file+'&amp;h=100&amp;w=100&amp;zc=1" />';
@@ -52,7 +54,8 @@ function BrowseServerMore(render_id)
 {
     var finder = new CKFinder();
     finder.basePath = 'ckfinder/';	// The path for the installation of CKFinder (default = "/ckfinder/").
-	finder.selectActionFunction = function( fileUrl ) {		
+    finder.resourceType = 'Images';
+    finder.selectActionFunction = function( fileUrl ) {		
 		$('#'+render_id).val(fileUrl);
 		var img = '<img src="/admin/timthumb.php?src='+fileUrl+'&amp;h=100&amp;w=100&amp;zc=1" />';
 		$('#images_chose_'+render_id).html(img);
