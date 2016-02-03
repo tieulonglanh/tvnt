@@ -10,7 +10,7 @@
     </div>
 <div id="footer">
     <div style="display: inline-block;width:100%;">
-        <?php echo $footerleft['Bloghtml']['html']; ?>
+        <?php echo $footerleft['Setting']['content']; ?>
             <div class="footer2">
                 <?php
            
@@ -34,7 +34,7 @@
                     <?php }?>
 
             </div>
-             <?php echo $footericon['Bloghtml']['html']; ?>
+             <?php echo $footericon['Setting']['content']; ?>
           
     </div>
 

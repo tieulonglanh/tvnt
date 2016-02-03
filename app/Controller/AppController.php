@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Subscribe','Menu','NewsCategory','Bloghtml');
+	public $uses = array('Subscribe','Menu','NewsCategory','Setting');
 	 public function beforeFilter() {
 	 // if($this->request->is('post')){
   //           $data=$this->request->data;
@@ -111,7 +111,7 @@ class AppController extends Controller {
         	)));
         $this->set('cat_news',$cat_news);
         ///////
-        $footericon = $this->Bloghtml->find('first', array(
+        $footericon = $this->Setting->find('first', array(
             'conditions' => array(
                 'name' => 'footer-icon'
             ),
@@ -120,7 +120,7 @@ class AppController extends Controller {
         $this->set('footericon', $footericon);
 
         ///
-         $footerleft = $this->Bloghtml->find('first', array(
+         $footerleft = $this->Setting->find('first', array(
             'conditions' => array(
                 'name' => 'footer-left'
             ),
@@ -128,7 +128,7 @@ class AppController extends Controller {
         ));
         $this->set('footerleft', $footerleft);
 
-         $banner = $this->Bloghtml->find('first', array(
+         $banner = $this->Setting->find('first', array(
             'conditions' => array(
                 'name' => 'banner'
             ),
@@ -136,7 +136,7 @@ class AppController extends Controller {
         ));
         $this->set('banner', $banner);
         /////////////////////////
-         $icontop = $this->Bloghtml->find('first', array(
+         $icontop = $this->Setting->find('first', array(
             'conditions' => array(
                 'name' => 'icontop'
             ),

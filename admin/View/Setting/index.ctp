@@ -43,7 +43,7 @@
                                 <tr>
                                     <th width="4%">STT</th>\
                                     <th width="30%" style="text-align:center;"><?php echo $this->Paginator->sort('Setting.name', 'Tên cấu hình'); ?></th>
-                                    <th width="11%"><?php echo $this->Paginator->sort('Setting.content', 'Nội dung'); ?></th>
+                                    <!-- <th width="11%"><?php echo $this->Paginator->sort('Setting.content', 'Nội dung'); ?></th> -->
                                     <th width="11%"><?php echo $this->Paginator->sort('Setting.modified', 'Thay đổi'); ?></th>
                                     <th width="12%">Xử lý</th>
                                     
@@ -82,7 +82,7 @@
                                     <td><?php echo $key+1; ?></td>
                                     
                                     <td><?php echo $value['Setting']['name']; ?></td>
-                                    <td><?php echo $value['Setting']['content']; ?></td>
+                                    <!-- <td><?php echo $value['Setting']['content']; ?></td> -->
                                     <td>
                                         <?php echo date('d-m-Y', strtotime($value['Setting']['modified'])); ?>
                                     </td>

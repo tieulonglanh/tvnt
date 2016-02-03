@@ -1,6 +1,6 @@
 <div id="header">
 
-<?php echo $banner['Bloghtml']['html']; ?>
+<?php echo $banner['Setting']['content']; ?>
 
 </div>
 
@@ -37,7 +37,7 @@ $(function(){
 <div id="notification"></div>
 <div id="util">
     <div class="share">
-    <?php echo $icontop['Bloghtml']['html']; ?>
+    <?php echo $icontop['Setting']['content']; ?>
     
     </div>
     <div id="search">

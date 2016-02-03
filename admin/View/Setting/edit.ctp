@@ -45,8 +45,25 @@
                         <?php echo $this->Form->input('Setting.name', array('label' => 'Tên cấu hình', 'class' => 'form-control', 'onchange' => 'get_alias()', 'id' => 'idtitle')); ?>
                     </div>
 
-                    <div class="form-group">
-                        <?php echo $this->Form->input('Setting.content', array('type' => 'textarea', 'label' => 'Nội dung cấu hình', 'class' => 'form-control', 'id' => 'content')); ?>
+                     <div class="form-group">
+                        <label>Nội dung cấu hình </label>
+                        <?php
+                        $CKEditor = new CKEditor();
+                        $CKEditor->returnOutput = true;
+                        $CKEditor->basePath = DOMAINAD . "js/ckeditor/";
+                        $CKEditor->config['width'] = '98%';
+                        $CKEditor->config['height'] = '200';
+
+                        CKFinder::SetupCKEditor( $CKEditor ) ;
+
+                        // $CKEditor->config['toolbar'] = array(
+                        //     array( 'Source', '-', 'Bold', 'Italic', 'Underline', 'Strike' ),
+                        //     array( 'Image', 'Link', 'Unlink', 'Anchor' )
+                        // );
+
+                        $initialValue = empty($this->data['Setting']['content']) ? '' : $this->data['Setting']['content'];
+                        echo $CKEditor->editor("data[Setting][content]", $initialValue, "");
+                        ?>
                     </div>
                     <?php echo $this->Form->input('Setting.id', array('type' => 'hidden')); ?>
                 </div>
