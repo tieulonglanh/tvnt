@@ -42,7 +42,10 @@ $(function(){
     </div>
     <div id="search">
     <div class="button-search"></div>
-        <input style="padding:5px 3px;" size="40" type="text" onkeydown="this.style.color = &#39;#000000&#39;;" onclick="this.value = &#39;&#39;;" value="Search" name="filter_name">
+        <form name="f1" id="f1" action="<?php echo DOMAIN; ?>tim-kiem.html" method="get" onsubmit="return checkForm(this);">
+        <input style="padding:5px 3px;" size="40" type="text" onkeydown="this.style.color = &#39;#000000&#39;;" onclick="this.value = &#39;&#39;;" value="Search" name="searchProduct">
+        <input type="submit" name="" value="" style="background: none;border: none;">
+        </form>
       </div>
     
     

@@ -32,9 +32,9 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Subscribe','Menu','NewsCategory','Setting');
+	public $uses = array('Menu','NewsCategory','Setting');
 	 public function beforeFilter() {
-	 
+
 
  		$menufooter= $this->Menu->find('all',array('conditions'=>array(
  				'Menu.type'=>2,
@@ -137,6 +137,14 @@ class AppController extends Controller {
             'order' => 'created DESC'
         ));
         $this->set('icontop', $icontop);
+
+         $facebook = $this->Setting->find('first', array(
+            'conditions' => array(
+                'name' => 'facebook'
+            ),
+            'order' => 'created DESC'
+        ));
+        $this->set('facebook', $facebook);
  	}
 }
 

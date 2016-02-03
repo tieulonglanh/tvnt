@@ -5,16 +5,10 @@
 	class HomeController extends AppController
 	{
 		public $name = 'Home';
-    	public $uses = array('ProductCategory','Product','Tag','Sitemap');
+    	public $uses = array('ProductCategory','Product','Tag','Sitemap','Subscribe');
 		public function index($id=null)
 		{
-            if($this->request->is('post')){
-            $name = $this->request->data;
-            if( $this->Subscribe->save($name)){
-                 echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
-            }
-       
-            }
+            
 			 $cat_product = $this->ProductCategory->find('all', array(
             'conditions' => array(
                 'ProductCategory.status' => 1,
@@ -105,6 +99,17 @@
              $cat_pro = $this->ProductCategory->read(null, $id);
              // pr($cat_pro);die;
             $this->set('cat_pro',$cat_pro);
+
+           $this->paginate = array(
+                    'conditions' => array(
+                    'Product.product_category_id'=>$cat_pro['ProductCategory']['id']
+                ),
+                    'order' => 'Product.modified DESC',
+                    'limit' => '8'
+                );
+
+            $listProduct= $this->paginate('Product');
+          $this->set('listProduct', $listProduct);
         $arraytag = explode(",",$cat_pro['ProductCategory']['tags']);
         //pr($a); die;
         $tag = $this->Tag->find('all', array(
@@ -119,7 +124,8 @@
         //////////////////////
         public function tag()
         {
-           $this->layout=false;
+            // die('bhrerer');
+           $this->layout='ajax';
              $cateid=$this->request->data['cateid'];
             $tagname=$this->request->data['tagname'];
            
@@ -202,5 +208,15 @@
         public function contact(){
 
         }
-	}
+        
+    public function subscribe() {
+        if ($this->request->is('post')) {
+            $name = $this->request->data;
+            if ($this->Subscribe->save($name)) {
+                echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
+            }
+        }
+    }
+
+}
 ?>

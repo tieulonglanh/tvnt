@@ -2,10 +2,10 @@
 <div id="column-right">
 
    <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="">BLOG - CHIA SẺ</a></div>
+  <div class="box-heading"><a target="_blank" href=""><?php echo $cateNew['NewsCategory']['name']?></a></div>
   <div class="box-content">
     <div class="blog">
-      <?php foreach ($listNew as $key => $value) {
+      <?php foreach ($listNews as $key => $value) {
       ?>
       <div>
         <p style="color:#d78627;font-size: 16px;font-weight: bold"><?php echo $value['News']['name']?></p>

@@ -35,7 +35,7 @@
     </div>
    
     <div class="box-left">
-        <img src="<?php echo DOMAIN?>images/face.png" alt="">
+        <?php echo $facebook['Setting']['content']; ?>
     </div>
     <div class="box-left">
       <div class="box-heading">Blog-chia sẻ</div>
@@ -46,11 +46,11 @@
 
                                 ?>
             <div style="padding-top: 20px;">
-                <a href="" title="" style="    color: #464544;line-height: 20px;">
-                <?php echo $value['New']['name']?>
+                <a href="<?php echo DOMAIN?>chi-tiet-tin/<?php echo $value['News']['alias']?>" title="" style="    color: #464544;line-height: 20px;">
+                <?php echo $value['News']['name']?>
                 </a>
                 <div style="    margin-top: 5px;">
-                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;">  <?php echo $value['New']['modified']?>
+                    <img src="<?php echo DOMAIN?>images/lich.png" alt="" style="    margin-bottom: -2px;">  <?php echo $value['News']['modified']?>
                 </div>
             </div>
             <?php }?>

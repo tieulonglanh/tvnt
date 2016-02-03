@@ -35,7 +35,7 @@
     </div>
    
 	<div class="box-left">
-		<img src="images/face.png" alt="">
+		 <?php echo $facebook['Setting']['content']; ?>
 	</div>
 
 

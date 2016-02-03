@@ -10,4 +10,15 @@
 	<a class="contact" href="http://newfuturegraphics.org/index.php?route=information/contact">Liên hệ</a></div>
       </div>
 <?php }?>
-         <p class="continue"><span>Prev</span><span class="current">1</span><span>2</span><span>Next</span></p>
+        <p class="continue">
+            
+                        <?php
+                echo $this->Paginator->first(' Đầu ', null, null, array('class' => 'disabled'));     
+                echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled')); 
+                echo $this->Paginator->numbers(array('separator' =>" "));
+                echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled')); 
+                echo $this->Paginator->last(' Cuối ', null, null, array('class' => 'disabled')); 
+            ?>  
+
+                      
+        </p>

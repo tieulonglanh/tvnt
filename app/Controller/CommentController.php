@@ -6,7 +6,7 @@
 	{
 		public $name = 'Comment';
 
-       	public $uses = array('Menu','Slideshow','New','Advertisement','Product');
+       	public $uses = array('Menu','Slideshow','News','Advertisement','Product');
 		public function menungang(){
 
 			return($this->Menu->find('all',array('conditions'=>array('Menu.type'=>1),'order'=>'Menu.id ASC')));
@@ -17,7 +17,7 @@
 		}
 		public function newleft(){
 
-			return($this->New->find('all',array('conditions'=>array('New.status'=>1),'order'=>'New.modified DESC')));
+			return($this->News->find('all',array('conditions'=>array('News.status'=>1),'order'=>'News.modified DESC')));
 		}
 		public function ads(){
 

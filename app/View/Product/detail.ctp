@@ -2,7 +2,7 @@
 <div id="column-right">
     
    <div class="box-left">
-  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3dsmax-2015">MODELS - CLASSIC FURNITURE 02</a></div>
+  <div class="box-heading"><a target="_blank" href="http://newfuturegraphics.org/thu-vien-3dsmax-2015"><?php echo $detailProduct['Product']['name']?></a></div>
   <div id="tab-1">
   	<!-- <ul class="tab-1">
   		<li ><a href="ajax1" title="">nội thất </a></li>
