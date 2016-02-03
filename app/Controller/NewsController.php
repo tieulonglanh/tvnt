@@ -47,7 +47,9 @@
 		public function detail($id=null){
 
          $detailNews = $this->News->read(null, $id);
-           $this->set('detailNews', $detailNews);  
+           $this->set('detailNews', $detailNews);
+        $typeName = $this->NewsCategory->read(null, $detailNews['News']['news_category_id']);
+        $this->set('typeName', $typeName);
 		}
 	}
  ?>

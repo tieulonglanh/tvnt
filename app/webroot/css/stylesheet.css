@@ -48,7 +48,7 @@ h2 {
 }
 .continue{
 	    position: absolute;
-       bottom: 5px;
+       bottom: -5px;
     right: 15px;
 }
 .continue a{
