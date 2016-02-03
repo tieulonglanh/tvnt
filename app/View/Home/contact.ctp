@@ -36,11 +36,11 @@ Khách hàng ở Hà Nội, TP HCM , Bình Dương, Đồng Nai, chúng tôi có
             <?php echo $this->Form->input('Contact.email', array('label' => '', 'class' => 'contact_input', 'size' => 40)); ?>
             Enquiry:<br>
             <?php echo $this->Form->input('Contact.content', array('type' => 'textarea', 'cols' => '40', 'rows' => '8', 'label' => '', 'class' => 'contact_input input_content','style' => 'width: 99%')); ?>
-            <!-- Enter the code in the box below:<br> -->
-            <!-- <input type="text" name="captcha" value="" class="contact_input" size="40">
-            <br> -->
-            <?php $this->Captcha->render(array('type'=>'image','style' => 'margin-top: 5px'));?>
-            
+            Enter the code in the box below:<br>
+            <input type="text" name="captcha" value="" class="contact_input" size="40">
+            <br>
+            <span class="error"><?php echo $error;?></span>
+           <?php echo $this->Html->image('/home/captcha/', array('alt' => '', 'style' => 'margin-top: 5px')); ?>
         </div>
       
         <button type="submit">SEND</button>
