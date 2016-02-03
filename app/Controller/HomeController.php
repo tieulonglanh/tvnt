@@ -8,6 +8,13 @@
     	public $uses = array('ProductCategory','Product','Tag','Sitemap');
 		public function index($id=null)
 		{
+            if($this->request->is('post')){
+            $name = $this->request->data;
+            if( $this->Subscribe->save($name)){
+                 echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
+            }
+       
+            }
 			 $cat_product = $this->ProductCategory->find('all', array(
             'conditions' => array(
                 'ProductCategory.status' => 1,
