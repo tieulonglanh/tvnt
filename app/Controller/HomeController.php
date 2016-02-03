@@ -5,7 +5,18 @@
 	class HomeController extends AppController
 	{
 		public $name = 'Home';
-    	public $uses = array('ProductCategory','Product','Tag','Sitemap','Subscribe');
+        var $helpers = array('Html', 'Form', 'Captcha');
+        var $components = array('Captcha'=>array('field'=>'security_code'));//'Captcha'
+    	public $uses = array('ProductCategory','Product','Tag','Sitemap','Subscribe','Contact');
+
+         function captcha() {
+            $this->autoRender = false;
+            $this->layout='ajax';
+            if(!isset($this->Captcha))  { //if you didn't load in the header
+                $this->Captcha = $this->Components->load('Captcha'); //load it
+            }
+            $this->Captcha->create();
+        }
 		public function index($id=null)
 		{
             
@@ -206,9 +217,33 @@
 
         }
         public function contact(){
+            if($this->request->is('post')){
+               
+                if(!empty($this->request->data))    {
+                    $data=$this->request->data;
+               
+            $this->Contact->setCaptcha('security_code', $this->Captcha->getCode('Contact.security_code')); 
+            $this->Contact->set($this->request->data);
+            if($this->Contact->validates())  { 
+                 if($this->Contact->save($data)){
+                echo '<script language="javascript"> alert("Your enquiry has been successfully sent to the store owner! !"); location.href="' . DOMAIN . '";</script>';            
+                }
+                // $this->Contact->save($data);//save or something
+                // validation passed, do something
+                $this->Session->setFlash('Data Validation Success', 'default', array('class' => 'notice success'));
+
+            }   else    { //or
+                $this->Session->setFlash('Data Validation Failure', 'default', array('class' => 'cake-error'));
+               
+            }
+
+           
+            }
+         }
 
         }
-        
+
+
     public function subscribe() {
         if ($this->request->is('post')) {
             $name = $this->request->data;

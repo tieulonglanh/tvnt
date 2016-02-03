@@ -80,7 +80,7 @@ form {
 	margin: 0;
 	display: inline;
 }
-input[type='text'], input[type='password'], textarea {
+input[type='text'], input[type='password'], textarea ,input[type='email'] {
 	background: #fff;
 	border: 1px solid #CCCCCC;
 	padding: 3px;
