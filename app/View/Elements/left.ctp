@@ -35,7 +35,7 @@
     </div>
    
     <div class="box-left">
-        <img src="<?php echo DOMAIN?>images/face.png" alt="">
+        <?php echo $facebook['Setting']['content']; ?>
     </div>
     <div class="box-left">
       <div class="box-heading">Blog-chia sẻ</div>
