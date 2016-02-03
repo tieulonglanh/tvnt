@@ -1,8 +1,8 @@
 <div style="background: #232a2e;padding-left: 25px;height: 102px;text-align: center;    margin-top: -20px">
         <span style="line-height: 102px;">
             <span style="color:#fff;font-weight: bold;">THUVIENKIENTRUC.COM.VN</span>
-            <form action="" method="post" accept-charset="utf-8">
-            <input style=" margin-left: 25px;margin-right: 10px;   width: 418px;height: 28px;font-weight: bold;" type="text" name="email" value="" placeholder="Enter your email address" required>
+            <form action="<?php echo DOMAIN ?>Home/subscribe" method="post" accept-charset="utf-8">
+            <input style=" margin-left: 25px;margin-right: 10px;   width: 418px;height: 28px;font-weight: bold;" type="text" name="data[Subscribe][email]" value="" placeholder="Enter your email address" required>
 
             <button  type="submit" class="subscribe">SUBSCRIBE</button>
         </form>

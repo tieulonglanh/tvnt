@@ -73,6 +73,7 @@ $(document).ready(function() {
         $('#option<?php echo $i?>>ul>li a').click(function(){
                 // alert('ádasdasd');
             var tab = $(this).attr('url');
+            alert(tab);
             var cate_id = $(this).attr('cateid');
             var tag_name = $(this).attr('tagname');
             $('#con<?php echo $i?>').load(tab, {cateid:cate_id, tagname:tag_name});
@@ -83,7 +84,6 @@ $(document).ready(function() {
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-        $('#tabs-3').load('content/ajax5.ctp');
 
         $('#tab-<?php echo $i?>>ul>li a').click(function(){
             var tab = $(this).attr('href');

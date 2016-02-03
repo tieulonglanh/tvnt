@@ -5,7 +5,7 @@
 	class HomeController extends AppController
 	{
 		public $name = 'Home';
-    	public $uses = array('ProductCategory','Product','Tag','Sitemap');
+    	public $uses = array('ProductCategory','Product','Tag','Sitemap','Subscribe');
 		public function index($id=null)
 		{
 			 $cat_product = $this->ProductCategory->find('all', array(
@@ -112,7 +112,8 @@
         //////////////////////
         public function tag()
         {
-           $this->layout=false;
+            die('bhrerer');
+           $this->layout='ajax';
              $cateid=$this->request->data['cateid'];
             $tagname=$this->request->data['tagname'];
            
@@ -195,5 +196,15 @@
         public function contact(){
 
         }
-	}
+        
+    public function subscribe() {
+        if ($this->request->is('post')) {
+            $name = $this->request->data;
+            if ($this->Subscribe->save($name)) {
+                echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
+            }
+        }
+    }
+
+}
 ?>

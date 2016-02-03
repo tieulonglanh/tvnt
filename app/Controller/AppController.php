@@ -32,15 +32,9 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Subscribe','Menu','NewsCategory','Setting');
+	public $uses = array('Menu','NewsCategory','Setting');
 	 public function beforeFilter() {
-	 if($this->request->is('post')){
-            $name = $this->request->data;
-            if( $this->Subscribe->save($name)){
-                 echo '<script language="javascript"> alert("Subscribe thành công !"); location.href="' . DOMAIN . '";</script>';
-            }
-       
- 		}        
+	      
 
  		$menufooter= $this->Menu->find('all',array('conditions'=>array(
  				'Menu.type'=>2,
