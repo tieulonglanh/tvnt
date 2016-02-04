@@ -32,7 +32,12 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $uses = array('Menu','NewsCategory','Setting');
+	public $uses = array('Menu','NewsCategory','Setting','Product');
+    public $paginate = array(
+        'limit' => 5
+    );
+    public $helpers = array('Js');
+    public $components = array('RequestHandler');
 	 public function beforeFilter() {
 
 
@@ -41,6 +46,8 @@ class AppController extends Controller {
  				'Menu.parent_id'=>0,
  			)));
  		$this->set('menufooter',$menufooter);
+        
+
  		 $list_cate_id1 = array();
         foreach ($menufooter as $menufooter_cat) {
             $list_cate_id1[] = $menufooter_cat['Menu']['id'];
@@ -98,6 +105,15 @@ class AppController extends Controller {
         // pr($mang); die;
         $this->set('mag1', $mag1);
 
+         $count=$this->Product->find('count',array(
+
+            'conditions' => array(
+
+                'Product.product_category_id' => 1,
+
+            )));
+        $this->set('count', $count);
+//////////////////////////////////
         $cat_news=$this->NewsCategory->find('all',array('conditions'=>array(
         		'NewsCategory.status'=>1,
         		'NewsCategory.parent_id'=>0,

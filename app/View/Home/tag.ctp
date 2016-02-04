@@ -1,6 +1,17 @@
-<?php foreach ($listProduct as $key => $value) {
+<div id="con6">
+    
+
+<?php
+     $this->Paginator->options(array(
+      'update' => '#con6',
+      'evalScripts' => true
+      // 'before' => $this->Js->get("#con4")->effect('fadeIn', array('buffer' => false)),
+      // 'complete' => $this->Js->get("#con4")->effect('fadeOut', array('buffer' => false)),
+   )); 
+
+ foreach ($listProduct as $key => $value) {
 ?>
-<div class="element wow bounceInRight">
+<div class="element wow rollIn">
       
                 <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $value['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
                 
@@ -22,3 +33,5 @@
 
                       
         </p>
+        <?php echo $this->Js->writeBuffer(); ?>
+        </div>

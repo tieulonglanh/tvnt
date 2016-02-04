@@ -1,54 +1,13 @@
-  <script type="text/javascript">
-// $(document).ready(function() {
 
-// var $container = $('#con4');
-
-//   $container.isotope({
-// 	itemSelector : '.element'
-//   });
-  
-  
-//   var $optionSets = $('#option4 .option-set'),
-// 	  $optionLinks = $optionSets.find('a');
-
-//   $optionLinks.click(function(){
-// 	var $this = $(this);
-// 	// don't proceed if already selected
-// 	if ( $this.hasClass('selected') ) {
-// 	  return false;
-// 	}
-// 	var $optionSet = $this.parents('.option-set');
-// 	$optionSet.find('.selected').removeClass('selected');
-// 	$this.addClass('selected');
-
-// 	// make option object dynamically, i.e. { filter: '.my-filter-class' }
-// 	var options = {},
-// 		key = $optionSet.attr('data-option-key'),
-// 		value = $this.attr('data-option-value');
-// 	// parse 'false' as false boolean
-// 	value = value === 'false' ? false : value;
-// 	options[ key ] = value;
-// 	if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
-// 	  // changes in layout modes need extra logic
-// 	  changeLayoutMode( $this, options )
-// 	} else {
-// 	  // otherwise, apply new options
-// 	  $container.isotope( options );
-// 	}
-	
-// 	return false;
-//   });
-// // filter items when filter link is clicked
-// $('#filters a').click(function(){
-//   var selector = $(this).attr('data-filter');
-//   $container.isotope({ filter: selector });
-//   return false;	
-// });
-
-
-// });
-// </script>
- 
+     <?php 
+    // echo $this->Html->script('jquery');
+   $this->Paginator->options(array(
+      'update' => '#tabs-3',
+      'evalScripts' => true,
+      // 'before' => $this->Js->get("#tabs-3")->effect('fadeIn', array('buffer' => false)),
+      // 'complete' => $this->Js->get("#tabs-3")->effect('fadeOut', array('buffer' => false)),
+   )); 
+?>
 <div id="option4" class="tag clearfix">
 	  		<ul id="filters" class="option-set clearfix" data-option-key="filter">
 	  			<!-- <li><a href="#" title="" data-option-value="*">Tổng hợp </a></li> -->
@@ -60,12 +19,14 @@
 
 	  		</ul>
 	  	</div>
+
     <div id="con4" class="box-product-left clearfix">
+
 
                   <?php 
           if(!empty($listProduct)){ foreach ($listProduct as $key => $row1) {
                 ?>
-                  <div class="element">
+                  <div class="element wow rollIn">
               
                         <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $row1['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
                         
@@ -87,7 +48,9 @@
 
                       
         </p>
+       <?php echo $this->Js->writeBuffer(); ?>
     </div>
+      
     <script type="text/javascript">
     $(document).ready(function(){
 

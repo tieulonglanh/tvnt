@@ -113,7 +113,7 @@
         ////////////////////////
         public function ajax($id=null)
         {
-            $this->layout=false;
+            $this->layout='ajax';
 
              $cat_pro = $this->ProductCategory->read(null, $id);
              // pr($cat_pro);die;
@@ -124,7 +124,7 @@
                     'Product.product_category_id'=>$cat_pro['ProductCategory']['id']
                 ),
                     'order' => 'Product.modified DESC',
-                    'limit' => '8'
+                    'limit' => '1'
                 );
 
             $listProduct= $this->paginate('Product');
@@ -155,7 +155,7 @@
                 'Product.product_category_id'=>$cateid,
             ),
             'order' => 'Product.id DESC, Product.modified DESC',
-            'limit' => '8'
+            'limit' => '1'
         );
 
          $listProduct = $this->paginate('Product');

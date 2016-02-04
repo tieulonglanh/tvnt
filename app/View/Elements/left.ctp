@@ -8,11 +8,13 @@
             <div class="box-category dropdown-content" id="myDropdown">
                 <ul>
                 <?php foreach ($menuleft as $key => $value) {
-                    # code...
+                    
                 ?>
                     <li class='has-sub'>
                         <p>
-                            <a href="#"><img width="45" height="45" src="<?php echo DOMAIN?><?php echo $value['Menu']['icon']?>" alt=""><?php echo $value['Menu']['name']?><span style="    position: absolute;color: #9b9a9a;right: 0;">(10)</span></a>
+                            <a href="<?php echo $value['Menu']['link']?>"><img width="45" height="45" src="<?php echo DOMAIN?><?php echo $value['Menu']['icon']?>" alt=""><?php echo $value['Menu']['name']?><span  style="    position: absolute;color: #9b9a9a;right: 0;"><?php if(explode("/",$value['Menu']['link']='danh-muc')){
+
+                    }?>(10)</span></a>
                         </p>
                         <ul>
                             <?php foreach ($mag1[$value['Menu']['id']] as $key => $row) {

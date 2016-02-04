@@ -25,7 +25,7 @@ $(document).ready(function() {
         
     </ul>
   
-  <div id="tabs-<?php echo $i?>" class="box-content" style="position: relative;">
+  <div id="tabs-<?php echo $i?>" class="box-content" style="position: relative">
      <div id="option<?php echo $i?>" class="tag clearfix">
         <ul id="filters" class="option-set clearfix" data-option-key="filter">
           <!-- <li><a href="#" title="" data-option-value="*">Tổng hợp </a></li> -->
@@ -40,11 +40,12 @@ $(document).ready(function() {
 
         </ul>
       </div>
+      
     <div id="con<?php echo $i?>" class="box-product-left clearfix">
         <?php 
           if(!empty($data)){ foreach ($data[$value['ProductCategory']['id']] as $key => $row1) {
         ?>
-          <div class="element">
+          <div class="element wow rollIn">
       
                 <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $row1['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
                 
@@ -64,9 +65,10 @@ $(document).ready(function() {
         echo $this->Paginator->last(' Cuối ', null, null, array('class' => 'disabled')); 
     ?>  
 
-              
 </p>
+
     </div>
+    
     <script type="text/javascript">
     $(document).ready(function(){
 
