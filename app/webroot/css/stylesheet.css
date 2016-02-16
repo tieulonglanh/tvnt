@@ -46,12 +46,18 @@ h2 {
 	margin-top: 0px;
 	margin-bottom: 5px;
 }
-.continue{
+.continue,.continue1,.continue2, .continue3,.continue4{
 	    position: absolute;
        bottom: -5px;
     right: 15px;
 }
-.continue a{
+.continue a,
+.continue1 a,
+.continue2 a,
+.continue3 a,
+.continue4 a,
+.continue5 a
+{
 	font-weight:bold;
 	color:#000 !important;
 	font-size:12px;
@@ -935,7 +941,14 @@ text-transform: uppercase;
 #column-left .box-left .box-content{
 	padding: 0px 10px 30px 20px;
 }
-.continue span{
+.continue span,
+.continue1 span,
+.continue2 span,
+.continue3 span,
+.continue4 span,
+.continue5 span,
+.continue6 span
+{
 	    padding: 3px 16px 3px 16px;
 	    background: #d1cfc2;
 	    border: 1px #fff solid;

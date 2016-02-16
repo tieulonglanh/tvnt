@@ -25,6 +25,9 @@
                 $this->Captcha->create();
                 
             } 
+
+     
+
 		public function index($id=null)
 		{
             
@@ -86,28 +89,24 @@
        
         foreach($list_cate_id1 as $cate) {
             $child_arr = array($cate);
-            foreach($cat_product1 as $child)
+            foreach($cat_product1 as $child){
                 if($child['ProductCategory']['parent_id'] == $cate){
                     $child_arr[] = $child['ProductCategory']['id'] ;
                 }
-
-
-                 $this->paginate = array(
+            }
+             $this->paginate = array(
                     'conditions' => array(
                     'Product.product_category_id'=>$child_arr
                 ),
-                    'order' => 'Product.modified DESC',
+                    'order' => 'Product.id DESC',
                     'limit' => '3'
                 );
-          $data[$cate] = $this->paginate('Product');
-
-            //$cate_ids = array(cha, con1, con2,..);
-            // $data[$cate] = $this->Product->find('all',array('conditions'=>array(
-            //         'Product.product_category_id'=>$child_arr
-            //     )));
-            // var_dump($data[$cate][]);die;
+           $data[$cate]= $this->paginate('Product');
         }
+       
+        // pr($data);die;
         $this->set('data', $data);
+
             
 		}
         ////////////////////////

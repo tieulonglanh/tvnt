@@ -12,6 +12,56 @@ $(document).ready(function() {
  foreach ($cat_product as $key => $value) {
   $i++;
 ?>
+<script type="text/javascript">
+$(document).ready(function() {
+
+var $container = $('#con<?php echo $i?>');
+
+  $container.isotope({
+  itemSelector : '.element'
+  });
+  
+  
+  var $optionSets = $('#option<?php echo $i?> .option-set'),
+    $optionLinks = $optionSets.find('a');
+
+  $optionLinks.click(function(){
+  var $this = $(this);
+  // don't proceed if already selected
+  if ( $this.hasClass('selected') ) {
+    return false;
+  }
+  var $optionSet = $this.parents('.option-set');
+  $optionSet.find('.selected').removeClass('selected');
+  $this.addClass('selected');
+
+  // make option object dynamically, i.e. { filter: '.my-filter-class' }
+  var options = {},
+    key = $optionSet.attr('data-option-key'),
+    value = $this.attr('data-option-value');
+  // parse 'false' as false boolean
+  value = value === 'false' ? false : value;
+  options[ key ] = value;
+  if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+    // changes in layout modes need extra logic
+    changeLayoutMode( $this, options )
+  } else {
+    // otherwise, apply new options
+    $container.isotope( options );
+  }
+  
+  return false;
+  });
+// filter items when filter link is clicked
+$('#filters a').click(function(){
+  var selector = $(this).attr('data-filter');
+  $container.isotope({ filter: selector });
+  return false; 
+});
+
+
+});
+</script> 
    <div class="box-left">
   <div class="box-heading"><a target="_blank" href=""><?php echo $value['ProductCategory']['name']?></a></div>
   <div id="tab-<?php echo $i?>">
@@ -34,7 +84,7 @@ $(document).ready(function() {
            foreach ($tag1 as $key => $value1) {
           
           ?>
-          <li><a href="javascript:void(0)" tagname="<?php echo $value1['Tag']['tag_name']?>" cateid="<?php echo $value['ProductCategory']['id']?>" url="<?php echo DOMAIN?>home/tag/" title=""><?php echo $value1['Tag']['tag_name']?></a></li>
+          <li><a href="#filter" data-option-value=".<?php echo Inflector::slug($value1['Tag']['tag_name'],"-"); ?>" title=""><?php echo $value1['Tag']['tag_name']?></a></li>
           <?php }}?>
           
 
@@ -44,8 +94,10 @@ $(document).ready(function() {
     <div id="con<?php echo $i?>" class="box-product-left clearfix">
         <?php 
           if(!empty($data)){ foreach ($data[$value['ProductCategory']['id']] as $key => $row1) {
+             $tag = explode(",",$row1['Product']['tags']);
+             // pr($tag);die;
         ?>
-          <div class="element wow rollIn">
+          <div class="element wow rollIn <?php foreach ($tag as $key => $tag2) { echo Inflector::slug($tag2,"-")." "; }?>">
       
                 <div class="image"><a href=""><img height="188" src="<?php echo DOMAIN?><?php echo $row1['Product']['images']?>" alt="MODELS - CLASSIC FURNITURE 02"></a></div>
                 
@@ -56,16 +108,12 @@ $(document).ready(function() {
       </div>
       <?php }}?>
       <p class="continue">
-    
-                <?php
-        echo $this->Paginator->first(' Đầu ', null, null, array('class' => 'disabled'));     
-        echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled')); 
-        echo $this->Paginator->numbers(array('separator' =>" "));
-        echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled')); 
-        echo $this->Paginator->last(' Cuối ', null, null, array('class' => 'disabled')); 
-    ?>  
-
-</p>
+                        <?php
+                echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled','rel'=>'next/previous')); 
+                echo $this->Paginator->numbers(array('separator' =>" ",'rel'=>'next/previous'));
+                echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled','rel'=>'next/previous')); 
+            ?>
+        </p>
 
     </div>
     

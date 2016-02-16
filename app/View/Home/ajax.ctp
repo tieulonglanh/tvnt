@@ -25,6 +25,8 @@
 
                   <?php 
           if(!empty($listProduct)){ foreach ($listProduct as $key => $row1) {
+
+            
                 ?>
                   <div class="element wow rollIn">
               
@@ -39,11 +41,11 @@
               <p class="continue">
             
                         <?php
-                echo $this->Paginator->first(' Đầu ', null, null, array('class' => 'disabled'));     
-                echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled')); 
-                echo $this->Paginator->numbers(array('separator' =>" "));
-                echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled')); 
-                echo $this->Paginator->last(' Cuối ', null, null, array('class' => 'disabled')); 
+             
+                echo $this->Paginator->prev(' Trước ', null, null, array('class' => 'disabled','rel'=>'next/previous')); 
+                echo $this->Paginator->numbers(array('separator' =>" ",'rel'=>'next/previous'));
+                echo $this->Paginator->next(' Tiếp ', null, null, array('class' => 'disabled','rel'=>'next/previous')); 
+               
             ?>  
 
                       
